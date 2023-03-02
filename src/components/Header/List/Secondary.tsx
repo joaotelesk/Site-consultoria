@@ -3,6 +3,11 @@ import Link from "next/link";
 import { TextInput } from "@/components/InputText/InputText";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
+import { RiMenuFill } from "react-icons/ri";
+import { VscChromeClose } from "react-icons/vsc";
+
+// Utilities
+import { motion } from "framer-motion";
 
 // Hooks
 import { useRouter } from "next/router";
@@ -13,6 +18,15 @@ export function ListSecondary() {
 
   const [searchValue, setSearchValue] = useState("");
   const [showInput, setShowInput] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClick = () => {
+    setShowModal(true);
+  };
+
+  const handleClose = () => {
+    setShowModal(false);
+  };
 
   function handleNavClass(path: string) {
     const currentPath = router.pathname;
@@ -33,63 +47,108 @@ export function ListSecondary() {
 
   return (
     <>
-      {showInput ? (
-        <>
-          <div>
-            <TextInput.Root>
-              <TextInput.Icon>
-                <FiSearch
-                  className="transform scale-x-[-1] text-green-300"
-                  size={20}
-                />
-              </TextInput.Icon>
-              <TextInput.Input
-                type="text"
-                value={searchValue}
-                placeholder="Pesquise por tema"
-                onChange={handleInputChange}
-              />
-              <TextInput.Icon>
-                <AiOutlineClose
+      <div className=" lg:hidden">
+        <RiMenuFill
+          size={30}
+          className="cursor-pointer"
+          onClick={handleClick}
+        />
+
+        {showModal && (
+          <motion.div
+            initial={{ y: "-100vh" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100vh" }}
+            transition={{ duration: 0.5 }}
+            className="fixed top-0 left-0 w-full min-h-5/6 bg-white-500 flex justify-center items-center"
+            onClick={handleClose}
+          >
+            <motion.div
+              initial={{ y: "-100vh" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100vh" }}
+              transition={{ duration: 0.5 }}
+              className="bg-white rounded-lg px-4 py-5 w-full h-full flex flex-col justify-start"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-between">
+                <h2 className="text-2xl font-medium">Menu</h2>
+                <VscChromeClose
+                  size={30}
                   className="cursor-pointer"
-                  size={20}
-                  onClick={handleCloseClick}
+                  onClick={handleClose}
                 />
-              </TextInput.Icon>
-            </TextInput.Root>
-          </div>
-        </>
-      ) : (
-        <>
-          <ul className="flex items-center gap-14">
-            <li>
-              <Link href="#" className="link">
-                Dicas Imigrei
+              </div>
+              <ul className="mt-8 flex flex-col gap-4 font-medium">
+                <li className="MenuLi">Dicas Imigrei</li>
+                <li className="MenuLi">Italia</li>
+                <li className="MenuLi"> Portugal</li>
+              </ul>
+              <Link className="linkButton mt-10" href="#">
+                Contato
               </Link>
-            </li>
-            <li>
-              {" "}
-              <Link href="#" className="link">
-                Italia
-              </Link>{" "}
-            </li>
-            <li>
-              <Link href="#" className="link">
-                Portugal
-              </Link>
-            </li>
-            <li onClick={handleSearchClick}>
-              <FiSearch
-                className="transform scale-x-[-1] transition-transform duration-300"
-                size={30}
-              />
-            </li>
-          </ul>
-        </>
-      )}
-      <Link className="linkButton" href="#">
-        Contato Imigrei
-      </Link>
+            </motion.div>
+          </motion.div>
+        )}
+      </div>
+      <div className="hidden lg:flex gap-14">
+        {showInput ? (
+          <>
+            <div>
+              <TextInput.Root>
+                <TextInput.Icon>
+                  <FiSearch
+                    className="transform scale-x-[-1] text-green-300"
+                    size={20}
+                  />
+                </TextInput.Icon>
+                <TextInput.Input
+                  type="text"
+                  value={searchValue}
+                  placeholder="Pesquise por tema"
+                  onChange={handleInputChange}
+                />
+                <TextInput.Icon>
+                  <AiOutlineClose
+                    className="cursor-pointer"
+                    size={20}
+                    onClick={handleCloseClick}
+                  />
+                </TextInput.Icon>
+              </TextInput.Root>
+            </div>
+          </>
+        ) : (
+          <>
+            <ul className="flex items-center gap-14">
+              <li>
+                <Link href="#" className="link">
+                  Dicas Imigrei
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="link">
+                  Italia
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="link">
+                  Portugal
+                </Link>
+              </li>
+              <li onClick={handleSearchClick}>
+                <FiSearch
+                  className="transform scale-x-[-1] transition-transform duration-300"
+                  size={30}
+                />
+              </li>
+            </ul>
+          </>
+        )}
+        <Link className="linkButton" href="#">
+          Contato Imigrei
+        </Link>
+      </div>
     </>
   );
 }
