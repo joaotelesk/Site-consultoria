@@ -21,9 +21,9 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 w-full py-9 ${
+        className={`fixed top-0 w-full h-20 flex ${
           scrollPosition > 0 ? "bg-white-500 shadow-sm" : "bg-transparent"
-        } duration-500 z-5`}
+        } duration-500 z-5 item-center lg:h-24`}
       >
         <div className="container flex items-center justify-between">
           <Link href="/">
@@ -32,6 +32,7 @@ export function Header() {
               alt="Logo"
               width={193}
               height={35}
+              className="w-[135px] h-[25px] lg:w-[193px] lg:h-[35px]"
             />
           </Link>
           <nav className="flex items-center text-xl gap-20 text-green-500">
