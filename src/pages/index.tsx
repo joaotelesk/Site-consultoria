@@ -1,4 +1,8 @@
+// Components
 import Head from "next/head";
+
+// Utilities
+// Interfaces
 
 export default function Home() {
   return (
@@ -9,7 +13,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h2>Hello Word</h2>
+
+      <main className="h-screen">
+        <div className="bg-green-400 h-80 "></div>
+      </main>
     </>
   );
 }
