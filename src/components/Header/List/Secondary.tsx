@@ -91,7 +91,7 @@ export function ListSecondary() {
           </motion.div>
         )}
       </div>
-      <div className="hidden lg:flex gap-14">
+      <div className="hidden lg:flex gap-12">
         {showInput ? (
           <>
             <div>

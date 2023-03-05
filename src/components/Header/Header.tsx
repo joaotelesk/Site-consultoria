@@ -23,7 +23,7 @@ export function Header() {
       <header
         className={`fixed top-0 w-full h-20 flex ${
           scrollPosition > 0 ? "bg-white-500 shadow-sm" : "bg-transparent"
-        } duration-500 z-5 item-center lg:h-24`}
+        } duration-500 z-5 item-center lg:h-28`}
       >
         <div className="container flex items-center justify-between">
           <Link href="/">
