@@ -9,7 +9,9 @@
 .transition {
   transition: 1s;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 @layer base {
   html {
     scroll-behavior: smooth !important;
@@ -28,6 +30,9 @@
   }
   .link {
     @apply hover:text-blue-500 cursor-pointer;
+  }
+  .linkStyle {
+    @apply text-sm sm:text-base underline inline-block text-green-500 w-fit duration-300 hover:text-blue-500;
   }
 }
 
@@ -50,5 +55,12 @@
         rgba(250, 250, 250, 0) 45%
       );
     }
+  }
+  .box-green {
+    background: linear-gradient(
+      0deg,
+      rgba(227, 241, 228, 1) 75%,
+      rgba(227, 241, 228, 0) 75%
+    );
   }
 }
