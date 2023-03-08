@@ -112,7 +112,7 @@ export function ListPrimary() {
               {showServices ? <IoIosArrowUp /> : <IoIosArrowDown />}
             </div>
             {showServices && (
-              <ul className="absolute mt-0 py-4 z-10 flex flex-col">
+              <ul className="absolute mt-0 py-4 z-10 flex flex-col bg-white-500 w-auto px-6 rounded shadow">
                 <li className="py-2 link">Cidadania Portuguesa</li>
                 <li className="py-2 link">Vistos em Portugal</li>
                 <li className="py-2 link">Cidadania Italiana</li>
