@@ -1,10 +1,37 @@
 // Components
+import { Carousel } from "@/components/Carousel/Carousel";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
 // Utilities
 // Interfaces
+const ServiceData = [
+  {
+    title: "Cidadania Portuguesa",
+    description:
+      "Oferecemos uma variedade de serviços para os nossos assessorados que buscam o sonho de viver em Portugal e Itália!",
+    link: "#",
+    image: "/Home/service1.png",
+    alt: "imagem de uma mulher referente a servicos cidadania Portuguesa",
+  },
+  {
+    title: "Cidadania Italina",
+    description:
+      "Oferecemos uma variedade de serviços para os nossos assessorados que buscam o sonho de viver em Portugal e Itália!",
+    link: "#",
+    image: "/Home/service2.png",
+    alt: "imagem de uma mulher referente a servicos cidadania Portuguesa",
+  },
+  {
+    title: "Visto Portugues",
+    description:
+      "Oferecemos uma variedade de serviços para os nossos assessorados que buscam o sonho de viver em Portugal e Itália!",
+    link: "#",
+    image: "/Home/service3.svg",
+    alt: "imagem de uma mulher referente a servicos cidadania Portuguesa",
+  },
+];
 
 export default function Home() {
   return (
@@ -59,10 +86,8 @@ export default function Home() {
           />
 
           <div className="order-1 lg:order-2 flex flex-col">
-            <span className="text-xs mt-10 sm:text-base text-green-500 font-medium">
-              Quem Somos
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium text-">
+            <span className="text-green-500 font-medium">Quem Somos</span>
+            <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
               Prazer, somos a Imigrei!
             </h2>
             <p className="text-sm sm:text-base mt-4 text-gray-300">
@@ -77,6 +102,23 @@ export default function Home() {
             >
               Solicitar Atendimento
             </Link>
+          </div>
+        </section>
+        <section className="mt-12 lg:mt-28">
+          <div className="text-center container">
+            <span className="text-green-500 font-medium">Serviços</span>
+            <h2 className="mt-2  text-2xl sm:text-4xl text-black-400 font-medium">
+              Conheça as nossas áreas de atuação
+            </h2>
+            <p className="text-sm sm:text-base mt-4 text-gray-300 mx-auto max-w-xl ">
+              Oferecemos uma variedade de serviços para os nossos assessorados
+              que buscam o sonho de viver em Portugal e Itália!
+            </p>
+          </div>
+          <div className="mt-6 py-8 box-green overflow-hidden">
+            <div className="container">
+              <Carousel serviceData={ServiceData} />
+            </div>
           </div>
         </section>
       </main>
