@@ -1,11 +1,20 @@
 // Components
 import { Carousel } from "@/components/Carousel/Carousel";
+import { TextInput } from "@/components/InputText/InputText";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useToast } from "@chakra-ui/react";
+
+// Hooks
+import { useState } from "react";
 
 // Utilities
-// Interfaces
+import { useMutation } from "@apollo/client";
+import { SUBSCRIBE_MUTATION } from "@/graphql/mutations/mutation";
+
+const emailRegex = /\S+@\S+\.\S+/;
+
 const ServiceData = [
   {
     title: "Cidadania Portuguesa",
@@ -34,6 +43,48 @@ const ServiceData = [
 ];
 
 export default function Home() {
+  const [subscribeValue, setSubscribeValue] = useState("");
+  const [subscribe, { loading, error }] = useMutation(SUBSCRIBE_MUTATION);
+  const toast = useToast();
+
+  async function handleFormSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    if (subscribeValue !== "" && emailRegex.test(subscribeValue)) {
+      toast({
+        title: "Sucesso!",
+        position: "top",
+        description: `O email ${subscribeValue} foi castrado.`,
+        status: "success",
+        duration: 3000,
+
+        isClosable: true,
+      });
+      await subscribe({ variables: { email: subscribeValue } })
+        .then(() => {
+          console.log("Inscrição realizada com sucesso!");
+          setSubscribeValue("");
+        })
+
+        .catch(() => {
+          console.log("Ocorreu um erro ao inscrever-se.");
+          console.log(error);
+        });
+    } else {
+      toast({
+        title: "Erro",
+        position: "top",
+        description: "Preencha o campo de e-mail.",
+        status: "info",
+        duration: 3000,
+
+        isClosable: true,
+      });
+    }
+  }
+
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSubscribeValue(event.target.value);
+  }
   return (
     <>
       <Head>
@@ -86,7 +137,7 @@ export default function Home() {
           />
 
           <div className="order-1 lg:order-2 flex flex-col">
-            <span className="text-green-500 font-medium">Quem Somos</span>
+            <span className="mt-7 text-green-500 font-medium">Quem Somos</span>
             <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
               Prazer, somos a Imigrei!
             </h2>
@@ -120,6 +171,40 @@ export default function Home() {
               <Carousel serviceData={ServiceData} />
             </div>
           </div>
+        </section>
+        <section className="container my-10 text-center text-gray-500 bg-subscribeSm lg:bg-subscribeLg bg-cover py-14 lg:my-20">
+          <span className="mt-7 text-green-500 font-medium">Newsletter</span>
+          <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+            Fique por dentro das nossas atualizações!
+          </h2>
+          <p className="text-sm sm:text-base mt-4 text-gray-300">
+            Saiba o que acontece no mundo da imigrações e cidadania em Portugal
+            e Itália.
+          </p>
+
+          <form
+            onSubmit={handleFormSubmit}
+            className="flex flex-col items-center lg:items-baseline gap-5  mt-8 justify-center max-w-md mx-auto lg:flex-row"
+          >
+            <div className="w-64">
+              <TextInput.Root>
+                <TextInput.Input
+                  type="email"
+                  value={subscribeValue}
+                  placeholder="Digite o seu melhor E-mail"
+                  onChange={handleInputChange}
+                />
+              </TextInput.Root>
+            </div>
+
+            <button
+              type="submit"
+              className="linkButton text-sm lg:text-base mt-4"
+              disabled={loading}
+            >
+              Cadastrar
+            </button>
+          </form>
         </section>
       </main>
     </>
