@@ -17,6 +17,8 @@ module.exports = {
       backgroundImage: {
         mobile: "url(/Footer/mobile.png)",
         desktop: "url(/Footer/desktop.png)",
+        subscribeLg: "url(/Home/subscribe-lg.png)",
+        subscribeSm: "url(/Home/subscribe-sm.png)",
       },
     },
     fontFamily: {
