@@ -1,8 +1,12 @@
-import React from "react";
-import { motion } from "framer-motion";
+// Components
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
+// Utilities
+import React from "react";
+
+// Interfaces
 interface CarouselProps {
   serviceData: any[];
 }
