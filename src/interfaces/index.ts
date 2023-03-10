@@ -12,6 +12,7 @@ export interface Post {
     html: string;
   };
   postType: "dicas" | "italia" | "portugal";
+  tags: string[];
   createdAt: Date;
   updatedAt: Date;
   slug: string;
