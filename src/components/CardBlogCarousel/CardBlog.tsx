@@ -34,7 +34,10 @@ export function CardBlogCarousel({ blogData }: CardBlogProps) {
               <p className="text-sm sm:text-base text-gray-300">
                 {item.description}
               </p>
-              <Link href={item.slug} className="linkStyle">
+              <Link
+                href={`/blog/${item.postType}/${item.slug}`}
+                className="linkStyle"
+              >
                 ler este Post
               </Link>
             </motion.div>
