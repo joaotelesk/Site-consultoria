@@ -5,44 +5,27 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useToast } from "@chakra-ui/react";
+import { CardBlogCarousel } from "@/components/CardBlogCarousel/CardBlog";
 
 // Hooks
 import { useState } from "react";
 
 // Utilities
+import { ServiceData } from "@/Utilities/ServiceData";
+import { emailRegex } from "@/Utilities/Regex";
 import { useMutation } from "@apollo/client";
 import { SUBSCRIBE_MUTATION } from "@/graphql/mutations/mutation";
+import { GET_FIRST_FOUR_POSTS_QUERY } from "@/graphql/queries/query";
+import { client } from "@/lib/apollo";
+import { Post } from "@/interfaces";
+import { NextPage } from "next";
 
-const emailRegex = /\S+@\S+\.\S+/;
+// Interfaces
+interface HomeProps {
+  blogData: Post[];
+}
 
-const ServiceData = [
-  {
-    title: "Cidadania Portuguesa",
-    description:
-      "Oferecemos uma variedade de serviços para os nossos assessorados que buscam o sonho de viver em Portugal e Itália!",
-    link: "#",
-    image: "/Home/service1.png",
-    alt: "imagem de uma mulher referente a servicos cidadania Portuguesa",
-  },
-  {
-    title: "Cidadania Italina",
-    description:
-      "Oferecemos uma variedade de serviços para os nossos assessorados que buscam o sonho de viver em Portugal e Itália!",
-    link: "#",
-    image: "/Home/service2.png",
-    alt: "imagem de uma mulher referente a servicos cidadania Portuguesa",
-  },
-  {
-    title: "Visto Portugues",
-    description:
-      "Oferecemos uma variedade de serviços para os nossos assessorados que buscam o sonho de viver em Portugal e Itália!",
-    link: "#",
-    image: "/Home/service3.svg",
-    alt: "imagem de uma mulher referente a servicos cidadania Portuguesa",
-  },
-];
-
-export default function Home() {
+const Home: NextPage<HomeProps> = ({ blogData }) => {
   const [subscribeValue, setSubscribeValue] = useState("");
   const [subscribe, { loading, error }] = useMutation(SUBSCRIBE_MUTATION);
   const toast = useToast();
@@ -104,7 +87,7 @@ export default function Home() {
                 height={35}
                 className="mx-auto lg:ml-0"
               />
-              <h1 className="mt-4 text-3xl font-medium  lg:text-5xl text-black-500">
+              <h1 className="mt-4 text-3xl font-medium  lg:text-5xl text-black-500 ">
                 Assessoria de imigração para Portugal e Itália
               </h1>
               <p className="mx-auto mt-4 lg:mt-3 text-gray-300 text-sm lg:text-xl max-w-md lg:ml-0">
@@ -121,13 +104,13 @@ export default function Home() {
             <Image
               src="/Home/banner.svg"
               alt="Imagem banner principal"
-              width={426}
+              width={450}
               height={418}
               className="self-end mx-auto"
             />
           </div>
         </section>
-        <section className="text-center lg:text-start container grid grid-cols-1 lg:grid-cols-2 items-center gap-24 mt-12 lg:my-16 box-white">
+        <section className="text-center lg:text-start container grid grid-cols-1 lg:grid-cols-2 items-center gap-16 mt-12 lg:my-16 box-white">
           <Image
             src="/Home/quemSomos.svg"
             alt="imagem de uma mulher sorrindo"
@@ -137,7 +120,7 @@ export default function Home() {
           />
 
           <div className="order-1 lg:order-2 flex flex-col">
-            <span className="mt-7 text-green-500 font-medium">Quem Somos</span>
+            <span className="mt-4 text-green-500 font-medium">Quem Somos</span>
             <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
               Prazer, somos a Imigrei!
             </h2>
@@ -206,7 +189,51 @@ export default function Home() {
             </button>
           </form>
         </section>
+        <section className="my-10 lg:my-28">
+          <div className="flex flex-col container items-center lg:items-stretch">
+            <div className="text-center lg:text-start flex items-center">
+              <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
+                <span className="mt-4 text-green-500 font-medium">Blog</span>
+                <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+                  Conteúdo de qualidade para imigrantes
+                </h2>
+                <p className="text-sm sm:text-base mt-4 text-gray-300">
+                  Oferecemos uma variedade de serviços para os nossos
+                  assessorados que buscam o sonho de viver em Portugal e Itália!
+                </p>
+              </div>
+              <Link href="#" className="hidden lg:block button ml-auto">
+                Ver Blog
+              </Link>
+            </div>
+            <div className="container lg:px-0">
+              <CardBlogCarousel blogData={blogData} />
+            </div>
+
+            <Link href="#" className="lg:hidden button mt-5 ">
+              Ver Blog
+            </Link>
+          </div>
+        </section>
       </main>
     </>
   );
+};
+
+export default Home;
+
+export async function getStaticProps() {
+  const { data } = await client.query<{ posts: Post[] }>({
+    query: GET_FIRST_FOUR_POSTS_QUERY,
+  });
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { blogData: data.posts },
+  };
 }
