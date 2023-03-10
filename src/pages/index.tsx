@@ -102,9 +102,9 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               </Link>
             </div>
             <Image
-              src="/Home/banner.svg"
+              src="/Home/banner.png"
               alt="Imagem banner principal"
-              width={450}
+              width={426}
               height={418}
               className="self-end mx-auto"
             />
@@ -202,7 +202,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
                   assessorados que buscam o sonho de viver em Portugal e Itália!
                 </p>
               </div>
-              <Link href="#" className="hidden lg:block button ml-auto">
+              <Link href="/blog" className="hidden lg:block button ml-auto">
                 Ver Blog
               </Link>
             </div>
@@ -210,7 +210,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               <CardBlogCarousel blogData={blogData} />
             </div>
 
-            <Link href="#" className="lg:hidden button mt-5 ">
+            <Link href="/blog" className="lg:hidden button mt-5 ">
               Ver Blog
             </Link>
           </div>
