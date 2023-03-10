@@ -14,7 +14,7 @@ interface CarouselProps {
 export function Carousel({ serviceData }: CarouselProps) {
   return (
     <>
-      <div className=" container overflow-x-scroll pb-4 scrollbar-hidden text-start z-0">
+      <div className=" container lg:px-0 overflow-x-scroll pb-4 scrollbar-hidden text-start z-0">
         <div className="flex justify-start gap-x-4  ">
           {serviceData.map((service) => (
             <motion.div
