@@ -38,6 +38,9 @@
   .linkStyle {
     @apply text-sm sm:text-base underline inline-block text-green-500 w-fit duration-300 hover:text-blue-500;
   }
+  .input {
+    @apply transparent-bg border-b border-green-500 text-green-500  outline-none placeholder:text-green-300 hover:text-green-500;
+  }
 }
 
 @layer utilities {
