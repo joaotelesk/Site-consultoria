@@ -7,3 +7,23 @@ export const SUBSCRIBE_MUTATION = gql`
     }
   }
 `;
+
+export const FORM_MUTATION = gql`
+  mutation CreateFormMutation(
+    $name: String!
+    $email: String!
+    $cellPhone: String!
+    $message: String!
+  ) {
+    createForm(
+      data: {
+        name: $name
+        email: $email
+        cellPhone: $cellPhone
+        message: $message
+      }
+    ) {
+      id
+    }
+  }
+`;
