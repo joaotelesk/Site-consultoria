@@ -19,3 +19,10 @@ export interface Post {
   thumbnail: Thumbnail;
   thumbnailDescription: string;
 }
+
+export interface FormValue {
+  name: string;
+  email: string;
+  cellPhone: string;
+  message: string;
+}
