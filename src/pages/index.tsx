@@ -12,13 +12,13 @@ import { ChangeEvent, useState } from "react";
 
 // Utilities
 import { emailRegex, initState, ServiceData } from "@/Utilities/Variables";
+import useService from "@/Utilities/Services";
 import { GET_FIRST_FOUR_POSTS_QUERY } from "@/graphql/queries/query";
 import { client } from "@/lib/apollo";
-import { FormValue, Post } from "@/interfaces";
 import { NextPage } from "next";
-import useService from "@/Utilities/Services";
 
 // Interfaces
+import { FormValue, Post } from "@/interfaces";
 interface HomeProps {
   blogData: Post[];
 }
@@ -124,32 +124,36 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
             />
           </div>
         </section>
-        <section className="text-center lg:text-start container grid grid-cols-1 lg:grid-cols-2 items-center gap-16 mt-12 lg:my-16 box-white">
-          <Image
-            src="/Home/quemSomos.svg"
-            alt="imagem de uma mulher sorrindo"
-            width={345}
-            height={362}
-            className="order-2 lg:order-1 mx-auto"
-          />
+        <section className="lg:container">
+          <div className="text-center lg:text-start container grid grid-cols-1 lg:grid-cols-2 items-center gap-16 mt-12 lg:my-16 box-white">
+            <Image
+              src="/Home/quemSomos.svg"
+              alt="imagem de uma mulher sorrindo"
+              width={345}
+              height={362}
+              className="order-2 lg:order-1 mx-auto"
+            />
 
-          <div className="order-1 lg:order-2 flex flex-col">
-            <span className="mt-4 text-green-500 font-medium">Quem Somos</span>
-            <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
-              Prazer, somos a Imigrei!
-            </h2>
-            <p className="text-sm sm:text-base mt-4 text-gray-300">
-              Oferecemos uma variedade de serviços para os nossos assessorados
-              que buscam o sonho de viver em Portugal e Itália! Oferecemos uma
-              variedade de serviços para os nossos assessorados que buscam o
-              sonho de viver em Portugal e Itália!
-            </p>
-            <Link
-              href="#"
-              className="text-sm sm:text-base linkButton self-center lg:self-start my-4"
-            >
-              Solicitar Atendimento
-            </Link>
+            <div className="order-1 lg:order-2 flex flex-col">
+              <span className="mt-4 text-green-500 font-medium">
+                Quem Somos
+              </span>
+              <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+                Prazer, somos a Imigrei!
+              </h2>
+              <p className="text-sm sm:text-base mt-4 text-gray-300">
+                Oferecemos uma variedade de serviços para os nossos assessorados
+                que buscam o sonho de viver em Portugal e Itália! Oferecemos uma
+                variedade de serviços para os nossos assessorados que buscam o
+                sonho de viver em Portugal e Itália!
+              </p>
+              <Link
+                href="#"
+                className="text-sm sm:text-base linkButton self-center lg:self-start my-4"
+              >
+                Solicitar Atendimento
+              </Link>
+            </div>
           </div>
         </section>
         <section className="mt-12 lg:mt-28">
@@ -169,41 +173,43 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
             </div>
           </div>
         </section>
-        <section className="container my-10 text-center text-gray-500 bg-subscribeSm lg:bg-subscribeLg bg-cover py-14 lg:my-20">
-          <span className="mt-7 text-green-500 font-medium">Newsletter</span>
-          <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
-            Fique por dentro das nossas atualizações!
-          </h2>
-          <p className="text-sm sm:text-base mt-4 text-gray-300">
-            Saiba o que acontece no mundo da imigrações e cidadania em Portugal
-            e Itália.
-          </p>
+        <section className="lg:container">
+          <div className="container my-10 text-center text-gray-500 bg-subscribeSm lg:bg-subscribeLg bg-cover py-14 lg:my-20">
+            <span className="mt-7 text-green-500 font-medium">Newsletter</span>
+            <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+              Fique por dentro das nossas atualizações!
+            </h2>
+            <p className="text-sm sm:text-base mt-4 text-gray-300">
+              Saiba o que acontece no mundo da imigrações e cidadania em
+              Portugal e Itália.
+            </p>
 
-          <form
-            onSubmit={handleSubscribeSubmit}
-            className="flex flex-col items-center lg:items-baseline gap-5  mt-8 justify-center max-w-md mx-auto lg:flex-row"
-          >
-            <div className="w-64">
-              <TextInput.Root>
-                <TextInput.Input
-                  type="email"
-                  value={subscribeValue}
-                  placeholder="Digite o seu melhor E-mail"
-                  onChange={handleSubscribeChange}
-                />
-              </TextInput.Root>
-            </div>
-
-            <button
-              type="submit"
-              className="linkButton text-sm lg:text-base mt-4"
-              disabled={loading}
+            <form
+              onSubmit={handleSubscribeSubmit}
+              className="flex flex-col items-center lg:items-baseline gap-5  mt-8 justify-center max-w-md mx-auto lg:flex-row"
             >
-              Cadastrar
-            </button>
-          </form>
+              <div className="w-64">
+                <TextInput.Root>
+                  <TextInput.Input
+                    type="email"
+                    value={subscribeValue}
+                    placeholder="Digite o seu melhor E-mail"
+                    onChange={handleSubscribeChange}
+                  />
+                </TextInput.Root>
+              </div>
+
+              <button
+                type="submit"
+                className="linkButton text-sm lg:text-base mt-4"
+                disabled={loading}
+              >
+                Cadastrar
+              </button>
+            </form>
+          </div>
         </section>
-        <section className="my-10 lg:my-28">
+        <section className="my-12 lg:my-28">
           <div className="flex flex-col container items-center lg:items-stretch">
             <div className="text-center lg:text-start flex items-center">
               <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
@@ -229,73 +235,75 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
             </Link>
           </div>
         </section>
-        <section className="my-10 lg:my-24  container bg-green-400  flex justify-center items-center ">
-          <div className="grid  grid-cols-1 lg:grid-cols-2 gap-x-24">
-            <div className="lg:max-w-md py-16 text-center lg:text-start  px-5 lg:px-0">
-              <span className="mt-4 text-green-500 font-medium">Contato</span>
-              <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
-                Fale com a Imigrei
-              </h2>
-              <p className="text-sm sm:text-base mt-4 text-gray-500">
-                Preencha o formulário com os seus melhores contatos que
-                retornaremos o mais breve possível!
-              </p>
-              <form
-                onSubmit={handleFormSubmit}
-                className="mt-9 flex flex-col gap-9"
-              >
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Nome *"
-                  value={values.name}
-                  name="name"
-                  onChange={handleFormChange}
-                  required
-                />
-
-                <div className="flex items-center gap-7 flex-wrap">
+        <section className="lg:container">
+          <div className="my-10 lg:my-24  container bg-green-400  flex justify-center items-center ">
+            <div className="grid  grid-cols-1 lg:grid-cols-2 gap-x-24">
+              <div className="lg:max-w-md py-16 text-center lg:text-start  px-5 lg:px-0">
+                <span className="mt-4 text-green-500 font-medium">Contato</span>
+                <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+                  Fale com a Imigrei
+                </h2>
+                <p className="text-sm sm:text-base mt-4 text-gray-500">
+                  Preencha o formulário com os seus melhores contatos que
+                  retornaremos o mais breve possível!
+                </p>
+                <form
+                  onSubmit={handleFormSubmit}
+                  className="mt-9 flex flex-col gap-9"
+                >
                   <input
-                    className="input flex-grow"
-                    type="email"
-                    placeholder="Email *"
-                    name="email"
-                    value={values.email}
+                    className="input"
+                    type="text"
+                    placeholder="Nome *"
+                    value={values.name}
+                    name="name"
                     onChange={handleFormChange}
                     required
                   />
-                  <input
-                    className="input flex-grow"
-                    type="tel"
-                    placeholder="Telefone"
-                    name="cellPhone"
-                    value={values.cellPhone}
+
+                  <div className="flex items-center gap-7 flex-wrap">
+                    <input
+                      className="input flex-grow"
+                      type="email"
+                      placeholder="Email *"
+                      name="email"
+                      value={values.email}
+                      onChange={handleFormChange}
+                      required
+                    />
+                    <input
+                      className="input flex-grow"
+                      type="tel"
+                      placeholder="Telefone"
+                      name="cellPhone"
+                      value={values.cellPhone}
+                      onChange={handleFormChange}
+                    />
+                  </div>
+                  <textarea
+                    className="input h-24"
+                    placeholder="Mensagem"
+                    name="message"
+                    value={values.message}
                     onChange={handleFormChange}
                   />
-                </div>
-                <textarea
-                  className="input h-24"
-                  placeholder="Mensagem"
-                  name="message"
-                  value={values.message}
-                  onChange={handleFormChange}
-                />
-                <button
-                  type="submit"
-                  className="linkButton mt-4"
-                  disabled={loading}
-                >
-                  Enviar
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    className="linkButton mt-4"
+                    disabled={loading}
+                  >
+                    Enviar
+                  </button>
+                </form>
+              </div>
+              <Image
+                alt="mulher de camisa listrada sorridente"
+                src="/Home/contato.png"
+                width={406}
+                height={596}
+                className="hidden lg:block self-end"
+              />
             </div>
-            <Image
-              alt="mulher de camisa listrada sorridente"
-              src="/Home/contato.png"
-              width={406}
-              height={596}
-              className="hidden lg:block self-end"
-            />
           </div>
         </section>
       </main>
