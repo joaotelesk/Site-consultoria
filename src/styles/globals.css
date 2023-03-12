@@ -22,6 +22,9 @@
 }
 
 @layer components {
+  .tags {
+    @apply px-3 py-2 bg-gray-400 text-gray-300 text-sm;
+  }
   .MenuLi {
     @apply border-b border-b-green-400 pb-5;
   }
