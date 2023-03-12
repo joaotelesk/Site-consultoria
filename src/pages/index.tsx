@@ -12,9 +12,7 @@ import { ChangeEvent, useState } from "react";
 
 // Utilities
 import { emailRegex, initState, ServiceData } from "@/Utilities/Variables";
-import useService from "@/Utilities/Services";
-import { GET_FIRST_FOUR_POSTS_QUERY } from "@/graphql/queries/query";
-import { client } from "@/lib/apollo";
+import { useServiceMutation, useServiceQuery } from "@/Utilities/Services";
 import { NextPage } from "next";
 
 // Interfaces
@@ -28,7 +26,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
   const [values, setValues] = useState<FormValue>(initState);
 
   const toast = useToast();
-  const { subscribeEmail, formContact, loading } = useService();
+  const { subscribeEmail, formContact, loading } = useServiceMutation();
 
   async function handleSubscribeSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -90,10 +88,10 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="w-full min-h-screen py-0">
+      <main className="w-full min-h-screen py-0 ">
         <section className=" text-center lg:text-start items-center bg-green-400 pt-28">
-          <div className="container grid grid-cols-1 lg:grid-cols-2 lg:gap-x-11">
-            <div className="py-4 lg:py-16 flex flex-col">
+          <div className=" container grid grid-cols-1 lg:grid-flow-col lg:gap-x-16 ">
+            <div className=" py-4 lg:py-16  flex flex-col ">
               <Image
                 src="/Home/bandeiras.png"
                 alt="Bandeiras de portugal e italia"
@@ -101,7 +99,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
                 height={35}
                 className="mx-auto lg:ml-0"
               />
-              <h1 className="mt-4 text-3xl font-medium  lg:text-5xl text-black-500 ">
+              <h1 className="mt-4 text-3xl font-medium  lg:text-5xl text-black-500">
                 Assessoria de imigração para Portugal e Itália
               </h1>
               <p className="mx-auto mt-4 lg:mt-3 text-gray-300 text-sm lg:text-xl max-w-md lg:ml-0">
@@ -120,7 +118,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               alt="Imagem banner principal"
               width={426}
               height={418}
-              className="self-end mx-auto"
+              className="self-end mx-full"
             />
           </div>
         </section>
@@ -314,17 +312,16 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
 export default Home;
 
 export async function getStaticProps() {
-  const { data } = await client.query<{ posts: Post[] }>({
-    query: GET_FIRST_FOUR_POSTS_QUERY,
-  });
+  const { getFirstFourPosts } = await useServiceQuery();
+  const blogData = await getFirstFourPosts();
 
-  if (!data) {
+  if (!blogData) {
     return {
       notFound: true,
     };
   }
 
   return {
-    props: { blogData: data.posts },
+    props: { blogData },
   };
 }
