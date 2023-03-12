@@ -11,63 +11,30 @@ import { CardBlogCarousel } from "@/components/CardBlogCarousel/CardBlog";
 import { ChangeEvent, useState } from "react";
 
 // Utilities
-import { ServiceData } from "@/Utilities/ServiceData";
-import { emailRegex } from "@/Utilities/Regex";
-import { useMutation } from "@apollo/client";
-import {
-  FORM_MUTATION,
-  SUBSCRIBE_MUTATION,
-} from "@/graphql/mutations/mutation";
+import { emailRegex, initState, ServiceData } from "@/Utilities/Variables";
 import { GET_FIRST_FOUR_POSTS_QUERY } from "@/graphql/queries/query";
 import { client } from "@/lib/apollo";
 import { FormValue, Post } from "@/interfaces";
 import { NextPage } from "next";
+import useService from "@/Utilities/services";
 
 // Interfaces
 interface HomeProps {
   blogData: Post[];
 }
 
-// Variables
-const initState = {
-  name: "",
-  email: "",
-  cellPhone: "",
-  message: "",
-};
 const Home: NextPage<HomeProps> = ({ blogData }) => {
   const [subscribeValue, setSubscribeValue] = useState("");
   const [values, setValues] = useState<FormValue>(initState);
-  const [subscribe, { loading }] = useMutation(SUBSCRIBE_MUTATION);
-  const [form] = useMutation(FORM_MUTATION);
+
   const toast = useToast();
+  const { subscribeEmail, formContact, loading } = useService();
 
   async function handleSubscribeSubmit(event: React.FormEvent) {
     event.preventDefault();
     if (subscribeValue !== "" && emailRegex.test(subscribeValue)) {
-      await subscribe({ variables: { email: subscribeValue } })
-        .then(() => {
-          setSubscribeValue("");
-          toast({
-            title: "Sucesso!",
-            position: "top",
-            description: `O email ${subscribeValue} foi castrado.`,
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          });
-        })
-
-        .catch(() => {
-          toast({
-            title: "Erro",
-            position: "top",
-            description: "Ocorreu um erro ao se inscrever-se.",
-            status: "info",
-            duration: 3000,
-            isClosable: true,
-          });
-        });
+      await subscribeEmail(subscribeValue);
+      setSubscribeValue("");
     } else {
       toast({
         title: "Erro",
@@ -86,41 +53,18 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
       values.email !== "" &&
       emailRegex.test(values.email)
     ) {
-      await form({
-        variables: {
-          name: values.name,
-          email: values.email,
-          cellPhone: values.cellPhone,
-          message: values.message,
-        },
-      })
-        .then(() => {
-          setValues(initState);
-          toast({
-            title: "Sucesso!",
-            position: "top",
-            description: `Formulário enviado!`,
-            status: "success",
-            duration: 3000,
-            isClosable: true,
-          });
-        })
-
-        .catch(() => {
-          toast({
-            title: "Erro",
-            position: "top",
-            description: "Ocorreu um erro no envio do formulário.",
-            status: "info",
-            duration: 3000,
-            isClosable: true,
-          });
-        });
+      await formContact(
+        values.name,
+        values.email,
+        values.cellPhone,
+        values.message
+      );
+      setValues(initState);
     } else {
       toast({
         title: "Erro",
         position: "top",
-        description: "Preencha os campos requerido corretamente",
+        description: "Preencha os campos requeridos corretamente",
         status: "info",
         duration: 3000,
         isClosable: true,
