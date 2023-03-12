@@ -19,6 +19,7 @@ module.exports = {
         desktop: "url(/Footer/desktop.png)",
         subscribeLg: "url(/Home/subscribe-lg.png)",
         subscribeSm: "url(/Home/subscribe-sm.png)",
+        blog: "url(/Blog/banner-bg.png)",
       },
     },
     fontFamily: {
