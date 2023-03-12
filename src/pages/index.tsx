@@ -8,16 +8,19 @@ import { useToast } from "@chakra-ui/react";
 import { CardBlogCarousel } from "@/components/CardBlogCarousel/CardBlog";
 
 // Hooks
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 // Utilities
 import { ServiceData } from "@/Utilities/ServiceData";
 import { emailRegex } from "@/Utilities/Regex";
 import { useMutation } from "@apollo/client";
-import { SUBSCRIBE_MUTATION } from "@/graphql/mutations/mutation";
+import {
+  FORM_MUTATION,
+  SUBSCRIBE_MUTATION,
+} from "@/graphql/mutations/mutation";
 import { GET_FIRST_FOUR_POSTS_QUERY } from "@/graphql/queries/query";
 import { client } from "@/lib/apollo";
-import { Post } from "@/interfaces";
+import { FormValue, Post } from "@/interfaces";
 import { NextPage } from "next";
 
 // Interfaces
@@ -25,32 +28,45 @@ interface HomeProps {
   blogData: Post[];
 }
 
+// Variables
+const initState = {
+  name: "",
+  email: "",
+  cellPhone: "",
+  message: "",
+};
 const Home: NextPage<HomeProps> = ({ blogData }) => {
   const [subscribeValue, setSubscribeValue] = useState("");
-  const [subscribe, { loading, error }] = useMutation(SUBSCRIBE_MUTATION);
+  const [values, setValues] = useState<FormValue>(initState);
+  const [subscribe, { loading }] = useMutation(SUBSCRIBE_MUTATION);
+  const [form] = useMutation(FORM_MUTATION);
   const toast = useToast();
 
-  async function handleFormSubmit(event: React.FormEvent) {
+  async function handleSubscribeSubmit(event: React.FormEvent) {
     event.preventDefault();
     if (subscribeValue !== "" && emailRegex.test(subscribeValue)) {
-      toast({
-        title: "Sucesso!",
-        position: "top",
-        description: `O email ${subscribeValue} foi castrado.`,
-        status: "success",
-        duration: 3000,
-
-        isClosable: true,
-      });
       await subscribe({ variables: { email: subscribeValue } })
         .then(() => {
-          console.log("Inscrição realizada com sucesso!");
           setSubscribeValue("");
+          toast({
+            title: "Sucesso!",
+            position: "top",
+            description: `O email ${subscribeValue} foi castrado.`,
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
         })
 
         .catch(() => {
-          console.log("Ocorreu um erro ao inscrever-se.");
-          console.log(error);
+          toast({
+            title: "Erro",
+            position: "top",
+            description: "Ocorreu um erro ao se inscrever-se.",
+            status: "info",
+            duration: 3000,
+            isClosable: true,
+          });
         });
     } else {
       toast({
@@ -59,13 +75,67 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
         description: "Preencha o campo de e-mail.",
         status: "info",
         duration: 3000,
+        isClosable: true,
+      });
+    }
+  }
+  async function handleFormSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    if (
+      values.name !== "" &&
+      values.email !== "" &&
+      emailRegex.test(values.email)
+    ) {
+      await form({
+        variables: {
+          name: values.name,
+          email: values.email,
+          cellPhone: values.cellPhone,
+          message: values.message,
+        },
+      })
+        .then(() => {
+          setValues(initState);
+          toast({
+            title: "Sucesso!",
+            position: "top",
+            description: `Formulário enviado!`,
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
+        })
 
+        .catch(() => {
+          toast({
+            title: "Erro",
+            position: "top",
+            description: "Ocorreu um erro no envio do formulário.",
+            status: "info",
+            duration: 3000,
+            isClosable: true,
+          });
+        });
+    } else {
+      toast({
+        title: "Erro",
+        position: "top",
+        description: "Preencha os campos requerido corretamente",
+        status: "info",
+        duration: 3000,
         isClosable: true,
       });
     }
   }
 
-  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleFormChange(
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const { name, value } = event.target;
+    setValues({ ...values, [name]: value });
+  }
+
+  function handleSubscribeChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSubscribeValue(event.target.value);
   }
   return (
@@ -166,7 +236,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
           </p>
 
           <form
-            onSubmit={handleFormSubmit}
+            onSubmit={handleSubscribeSubmit}
             className="flex flex-col items-center lg:items-baseline gap-5  mt-8 justify-center max-w-md mx-auto lg:flex-row"
           >
             <div className="w-64">
@@ -175,7 +245,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
                   type="email"
                   value={subscribeValue}
                   placeholder="Digite o seu melhor E-mail"
-                  onChange={handleInputChange}
+                  onChange={handleSubscribeChange}
                 />
               </TextInput.Root>
             </div>
@@ -213,6 +283,75 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
             <Link href="/blog" className="lg:hidden button mt-5 ">
               Ver Blog
             </Link>
+          </div>
+        </section>
+        <section className="my-10 lg:my-24  container bg-green-400  flex justify-center items-center ">
+          <div className="grid  grid-cols-1 lg:grid-cols-2 gap-x-24">
+            <div className="lg:max-w-md py-16 text-center lg:text-start  px-5 lg:px-0">
+              <span className="mt-4 text-green-500 font-medium">Contato</span>
+              <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+                Fale com a Imigrei
+              </h2>
+              <p className="text-sm sm:text-base mt-4 text-gray-500">
+                Preencha o formulário com os seus melhores contatos que
+                retornaremos o mais breve possível!
+              </p>
+              <form
+                onSubmit={handleFormSubmit}
+                className="mt-9 flex flex-col gap-9"
+              >
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Nome *"
+                  value={values.name}
+                  name="name"
+                  onChange={handleFormChange}
+                  required
+                />
+
+                <div className="flex items-center gap-7 flex-wrap">
+                  <input
+                    className="input flex-grow"
+                    type="email"
+                    placeholder="Email *"
+                    name="email"
+                    value={values.email}
+                    onChange={handleFormChange}
+                    required
+                  />
+                  <input
+                    className="input flex-grow"
+                    type="tel"
+                    placeholder="Telefone"
+                    name="cellPhone"
+                    value={values.cellPhone}
+                    onChange={handleFormChange}
+                  />
+                </div>
+                <textarea
+                  className="input h-24"
+                  placeholder="Mensagem"
+                  name="message"
+                  value={values.message}
+                  onChange={handleFormChange}
+                />
+                <button
+                  type="submit"
+                  className="linkButton mt-4"
+                  disabled={loading}
+                >
+                  Enviar
+                </button>
+              </form>
+            </div>
+            <Image
+              alt="mulher de camisa listrada sorridente"
+              src="/Home/contato.png"
+              width={406}
+              height={596}
+              className="hidden lg:block self-end"
+            />
           </div>
         </section>
       </main>
