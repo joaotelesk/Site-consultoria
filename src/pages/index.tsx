@@ -16,7 +16,7 @@ import { GET_FIRST_FOUR_POSTS_QUERY } from "@/graphql/queries/query";
 import { client } from "@/lib/apollo";
 import { FormValue, Post } from "@/interfaces";
 import { NextPage } from "next";
-import useService from "@/Utilities/services";
+import useService from "@/Utilities/Services";
 
 // Interfaces
 interface HomeProps {

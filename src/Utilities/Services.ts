@@ -27,7 +27,7 @@ const useService = () => {
       });
       return {
         success: true,
-        message: `O email ${email} foi cadastrado com sucesso.`,
+        message: `O email ${email} foi cadastrado com sucesso!`,
       };
     } catch (error) {
       toast({
