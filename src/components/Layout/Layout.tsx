@@ -12,9 +12,11 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <Header />
-      {children}
-      <Footer />
+      <div className="font-spaceGrotesk">
+        <Header />
+        {children}
+        <Footer />
+      </div>
     </>
   );
 }
