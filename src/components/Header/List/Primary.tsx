@@ -76,7 +76,7 @@ export function ListPrimary() {
                     {showServices ? <IoIosArrowUp /> : <IoIosArrowDown />}
                   </div>
                   {showServices ? (
-                    <ul className="font-normal text-lg mt-8 flex flex-col gap-4 px-4">
+                    <ul className="font-normal text-lg  flex flex-col gap-4 px-4">
                       <li className="MenuLi">Cidadania Portuguesa</li>
                       <li className="MenuLi">Cidadania Italiana</li>
                       <li>Visto</li>
@@ -106,16 +106,17 @@ export function ListPrimary() {
           <li
             onMouseEnter={toggleShowServices}
             onMouseLeave={toggleShowServices}
+            className="flex justify-center"
           >
             <div className="flex gap-3 items-center link">
               <span className={handleNavClass("services")}>Serviços</span>
               {showServices ? <IoIosArrowUp /> : <IoIosArrowDown />}
             </div>
             {showServices && (
-              <ul className="absolute mt-0 py-4 z-10 flex flex-col bg-white-500 w-auto px-6 rounded shadow">
-                <li className="py-2 link">Cidadania Portuguesa</li>
-                <li className="py-2 link">Vistos em Portugal</li>
-                <li className="py-2 link">Cidadania Italiana</li>
+              <ul className="absolute top-[72px] py-4 z-10 flex flex-col bg-white-500 w-auto px-3  rounded shadow text-base">
+                <li className="py-2 cursor-pointer ">Cidadania Portuguesa</li>
+                <li className="py-2 cursor-pointer ">Vistos em Portugal</li>
+                <li className="py-2  cursor-pointer">Cidadania Italiana</li>
               </ul>
             )}
           </li>
