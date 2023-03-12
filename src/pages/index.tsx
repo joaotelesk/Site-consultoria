@@ -259,7 +259,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
                     required
                   />
 
-                  <div className="flex items-center gap-7 flex-wrap">
+                  <div className="flex items-center gap-5 flex-wrap">
                     <input
                       className="input flex-grow"
                       type="email"
