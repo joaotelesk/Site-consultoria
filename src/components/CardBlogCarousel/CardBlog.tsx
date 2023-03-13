@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 // Interfaces
 import { Post } from "@/interfaces";
+import { convertStringCharacters } from "@/Utilities/Convert";
 
 interface CardBlogProps {
   blogData: Post[];
@@ -29,10 +30,10 @@ export function CardBlogCarousel({ blogData }: CardBlogProps) {
               />
 
               <h3 className="text-base sm:text-xl font-medium text-black-400">
-                {item.title}
+                {convertStringCharacters(item.title, 20)}
               </h3>
               <p className="text-sm sm:text-base text-gray-300">
-                {item.description}
+                {convertStringCharacters(item.description, 85)}...
               </p>
               <Link
                 href={`/blog/${item.postType}/${item.slug}`}
