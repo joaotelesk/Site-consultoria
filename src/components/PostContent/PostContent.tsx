@@ -38,8 +38,12 @@ export default function PostContent({ post }: PostContentProps) {
           <div className="col-span-5 ">
             <div className="flex flex-col">
               <span className="font-light flex gap-x-3 text-green-500">
-                <Link href="/blog" className="hover:text-blue-500">
+                <Link href="/" className="hover:text-blue-500">
                   <span>Início</span>
+                </Link>
+                {">"}
+                <Link href="/blog" className="hover:text-blue-500">
+                  <span>Blog</span>
                 </Link>
                 {">"}
                 <Link
