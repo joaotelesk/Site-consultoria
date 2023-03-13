@@ -3,19 +3,16 @@ import Head from "next/head";
 import PostContent from "@/components/PostContent/PostContent";
 import { GetStaticPropsContext, NextPage } from "next";
 import { Post } from "@/interfaces";
-import { useServiceQuery } from "@/Utilities/Services";
-import { convertDatePost } from "@/Utilities/Convert";
 
 // Utilities
-// Interfaces
+import { useServiceQuery } from "@/Utilities/Services";
 
+// Interfaces
 interface PageSlugProps {
   post: Post;
 }
 
 const PageSlug: NextPage<PageSlugProps> = ({ post }) => {
-  const updatedDate = convertDatePost(post.updatedAt);
-
   return (
     <>
       <Head>
@@ -26,8 +23,6 @@ const PageSlug: NextPage<PageSlugProps> = ({ post }) => {
       </Head>
       <main className="w-full min-h-screen py-0 ">
         <PostContent post={post} />
-
-        
       </main>
     </>
   );
