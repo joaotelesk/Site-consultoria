@@ -11,3 +11,23 @@ export const GET_FIRST_FOUR_POSTS_QUERY = gql`
     }
   }
 `;
+
+export const GET_POST_BY_SLUG_QUERY = gql`
+  query PostBySlug($slug: String!) {
+    post(where: { slug: $slug }) {
+      id
+      title
+      author
+      content
+      postType
+      createdAt
+      updatedAt
+      tags
+      thumbnail
+      thumbnailDescription
+      description
+      banner
+      bannerAlt
+    }
+  }
+`;
