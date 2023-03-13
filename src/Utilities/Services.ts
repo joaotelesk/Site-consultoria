@@ -5,7 +5,10 @@ import {
   FORM_MUTATION,
   SUBSCRIBE_MUTATION,
 } from "@/graphql/mutations/mutation";
-import { GET_FIRST_FOUR_POSTS_QUERY } from "@/graphql/queries/query";
+import {
+  GET_FIRST_FOUR_POSTS_QUERY,
+  GET_POST_BY_SLUG_QUERY,
+} from "@/graphql/queries/query";
 import { Post } from "@/interfaces";
 
 interface ServiceResponse {
@@ -96,6 +99,15 @@ export const useServiceQuery = async () => {
   const getFirstFourPosts = (): Post[] => {
     return data.data.posts;
   };
+  const getPostBySlug = async (slug: string): Promise<Post | null> => {
+    const { data } = await client.query<{ post: Post }>({
+      query: GET_POST_BY_SLUG_QUERY,
+      variables: {
+        slug,
+      },
+    });
+    return data.post || null;
+  };
 
-  return { getFirstFourPosts };
+  return { getFirstFourPosts, getPostBySlug };
 };
