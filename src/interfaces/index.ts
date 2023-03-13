@@ -7,10 +7,7 @@ export interface Post {
   author: string;
   title: string;
   description: string;
-  content: {
-    markdown: string;
-    html: string;
-  };
+  content: string;
   postType: "dicas" | "italia" | "portugal";
   tags: string[];
   createdAt: Date;
@@ -18,6 +15,8 @@ export interface Post {
   slug: string;
   thumbnail: Thumbnail;
   thumbnailDescription: string;
+  banner: string;
+  bannerAlt: string;
 }
 
 export interface FormValue {
