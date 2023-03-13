@@ -247,7 +247,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
                 </p>
                 <form
                   onSubmit={handleFormSubmit}
-                  className="mt-9 flex flex-col gap-9"
+                  className="mt-9 flex flex-col gap-5 lg:gap-7"
                 >
                   <input
                     className="input"
