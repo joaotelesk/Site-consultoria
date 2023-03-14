@@ -5,7 +5,7 @@
 
 </div>
 
-<h1 align="center">Portfólio</h1>
+<h1 align="center">Site Imigrei</h1>
 
 <h4 align="center">
 	🚧   Under construction...  🚧
@@ -67,7 +67,6 @@ Abaixo poderá ter acesso às principais tecnologias usadas neste projeto
 
 - [NextJS](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [GraphQL](https://graphql.org/)
 
