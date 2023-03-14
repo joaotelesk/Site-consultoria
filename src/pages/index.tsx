@@ -89,7 +89,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
       </Head>
 
       <main className="w-full min-h-screen py-0 ">
-        <section className=" text-center lg:text-start items-center bg-green-400 pt-28">
+        <section className=" text-center lg:text-start items-center bg-green-400  pt-16 lg:pt-24">
           <div className=" container grid grid-cols-1 lg:grid-flow-col lg:gap-x-16 ">
             <div className=" py-4 lg:py-16  flex flex-col ">
               <Image
@@ -118,7 +118,8 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               alt="Imagem banner principal"
               width={426}
               height={418}
-              className="self-end mx-full"
+              className="self-end mx-full ml-5 pt-10 lg:pt-0"
+              priority
             />
           </div>
         </section>
@@ -234,7 +235,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
           </div>
         </section>
         <section className="lg:container">
-          <div className="my-10 lg:my-24  container bg-green-400  flex justify-center items-center ">
+          <div className="my-0 lg:my-24  container bg-green-400  flex justify-center items-center ">
             <div className="grid  grid-cols-1 lg:grid-cols-2 gap-x-24">
               <div className="lg:max-w-md py-16 text-center lg:text-start  px-5 lg:px-0">
                 <span className="mt-4 text-green-500 font-medium">Contato</span>
