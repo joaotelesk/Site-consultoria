@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 // Utilities
 import React from "react";
+import { FiArrowUpRight } from "react-icons/fi";
 
 // Interfaces
 interface CarouselProps {
@@ -35,8 +36,12 @@ export function Carousel({ serviceData }: CarouselProps) {
                 <p className="mt-2 text-sm sm:text-base text-gray-300">
                   {service.description}
                 </p>
-                <Link href={service.link} className="linkStyle mt-4 lg:mt-11">
-                  Saiba mais
+                <Link
+                  href={service.link}
+                  className="linkStyle mt-4 lg:mt-11 flex gap-x-2 items-center"
+                >
+                  <span>Saiba mais </span>
+                  <FiArrowUpRight size={20} />
                 </Link>
               </div>
             </motion.div>

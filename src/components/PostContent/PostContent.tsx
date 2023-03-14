@@ -33,11 +33,11 @@ export default function PostContent({ post }: PostContentProps) {
 
   return (
     <>
-      <section className=" text-center lg:text-start pt-28 lg:pt-0 lg:mt-40">
+      <section className=" text-start pt-24 lg:pt-0 lg:mt-36">
         <div className="container grid grid-cols-1 lg:grid-cols-7 lg:gap-x-11">
           <div className="col-span-5 ">
             <div className="flex flex-col">
-              <span className="font-light flex gap-x-3 text-green-500">
+              <span className="font-light text-xs lg:text-base flex gap-x-1 lg:gap-x-3 text-green-500">
                 <Link href="/" className="hover:text-blue-500">
                   <span>Início</span>
                 </Link>
@@ -64,13 +64,13 @@ export default function PostContent({ post }: PostContentProps) {
                   ...
                 </span>
               </span>
-              <h2 className="mt-10 text-2xl sm:text-4xl text-black-400 font-medium">
+              <h2 className="mt-3 lg:mt-8 text-2xl sm:text-4xl text-black-400 font-medium">
                 {title}
               </h2>
-              <p className="mt-5 font-normal text-gray-300 text-xl">
+              <p className="mt-3 font-normal text-gray-300 text-xl">
                 {description}
               </p>
-              <div className="mt-7 lg:mt-12 flex gap-3 justify-center lg:justify-start">
+              <div className="mt-7 lg:mt-12 flex flex-wrap gap-x-5 gap-y-1 ">
                 {tags.length > 0 ? (
                   tags.map((tag, index) => (
                     <span key={index} className="tags">
@@ -82,28 +82,32 @@ export default function PostContent({ post }: PostContentProps) {
                 )}
               </div>
             </div>
-            <div className="mt-5 text-sm  lg:text-base  items-start flex lg:flex-row justify-between lg:items-center">
-              <p className="text-gray-300">
+            <div className="mt-5 text-xs  lg:text-base flex flex-wrap gap-x-5 gap-y-1 justify-between">
+              <p className="text-gray-300 ">
                 <span className="text-black-400">Criado </span>
                 {createdDate}
               </p>
-              <p className="text-gray-300">
-                <span className="text-black-400">Atualizado </span>{" "}
+
+              <p className="text-gray-300 ">
+                <span className="text-black-400">Atualizado </span>
                 {updatedDate}
               </p>
-              <p className="text-gray-300">
-                <span className="text-black-400">Escrito</span> por{" "}
+              <p className="text-gray-300 ">
+                <span className="text-black-400">Escrito</span> por
                 {convertStringUpcase(author)}
               </p>
             </div>
             <Image
-              width={752}
-              height={414}
+              width={350}
+              height={228}
               src={`${banner}`}
               alt={bannerAlt}
-              className="w-full mt-16 mb-4"
+              className="w-full mt-5 mb-4"
+              priority
             />
-            <span className=" text-gray-300">{bannerAlt}</span>
+            <span className="text-xs lg:text-base text-gray-300">
+              {bannerAlt}
+            </span>
             <article className="text-gray-300 my-10 flex flex-col gap-16 text-xl text-start">
               <div className="content-post">
                 {" "}
@@ -122,7 +126,7 @@ export default function PostContent({ post }: PostContentProps) {
                 Clique no botão abaixo para ser redirecionado!
               </p>
               <Link
-                href="#"
+                href="/"
                 className="mt-8 tags text-base self-start bg-green-500 text-white-500 "
               >
                 Ver site Imigrei

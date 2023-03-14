@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 // Interfaces
 import { Post } from "@/interfaces";
 import { convertStringCharacters } from "@/Utilities/Convert";
+import { FiArrowUpRight } from "react-icons/fi";
 
 interface CardBlogProps {
   blogData: Post[];
@@ -37,9 +38,10 @@ export function CardBlogCarousel({ blogData }: CardBlogProps) {
               </p>
               <Link
                 href={`/blog/${item.postType}/${item.slug}`}
-                className="linkStyle"
+                className="linkStyle flex gap-x-2 items-center"
               >
-                ler este Post
+                Ler este Post
+                <FiArrowUpRight size={20} />
               </Link>
             </motion.div>
           ))}
