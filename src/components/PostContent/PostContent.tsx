@@ -1,13 +1,18 @@
-import { Post } from "@/interfaces";
+// Components
+import Image from "next/image";
+import Link from "next/link";
+
+// Utilities
 import {
   convertDatePost,
   convertImage,
   convertStringCharacters,
   convertStringUpcase,
 } from "@/Utilities/Convert";
-import Image from "next/image";
-import Link from "next/link";
 import parse from "html-react-parser";
+
+// Interfaces
+import { Post } from "@/interfaces";
 
 interface PostContentProps {
   post: Post;
@@ -28,8 +33,6 @@ export default function PostContent({ post }: PostContentProps) {
   } = post;
   const updatedDate = convertDatePost(updatedAt);
   const createdDate = convertDatePost(createdAt);
-
-  console.log(content);
 
   return (
     <>
