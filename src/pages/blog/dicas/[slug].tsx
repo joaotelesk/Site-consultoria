@@ -6,13 +6,16 @@ import { Post } from "@/interfaces";
 
 // Utilities
 import { useServiceQuery } from "@/Utilities/Services";
+import { CardBlogCarousel } from "@/components/CardBlogCarousel/CardBlog";
+import Link from "next/link";
 
 // Interfaces
 interface PageSlugProps {
   post: Post;
+  blogData: Post[];
 }
 
-const PageSlug: NextPage<PageSlugProps> = ({ post }) => {
+const PageSlug: NextPage<PageSlugProps> = ({ post, blogData }) => {
   return (
     <>
       <Head>
@@ -23,6 +26,38 @@ const PageSlug: NextPage<PageSlugProps> = ({ post }) => {
       </Head>
       <main className="w-full min-h-screen py-0 ">
         <PostContent post={post} />
+
+        <section className="mb-16">
+          <div className="flex flex-col container items-center lg:items-stretch">
+            <div className="text-center lg:text-start flex items-center">
+              <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
+                <span className=" text-green-500 font-medium">
+                  Relacionados
+                </span>
+                <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+                  Leia Também
+                </h2>
+                <p className="text-sm sm:text-base mt-4 text-gray-300">
+                  Veja alguns dos posts do nosso blog que estão relacionados a{" "}
+                  {post.postType}.
+                </p>
+              </div>
+              <Link
+                href="/blog/dicas"
+                className="hidden lg:block button ml-auto"
+              >
+                Ver Todos
+              </Link>
+            </div>
+            <div className="container lg:px-0">
+              <CardBlogCarousel blogData={blogData} />
+            </div>
+
+            <Link href="/blog/dicas" className="lg:hidden button mt-5 ">
+              Ver Todos
+            </Link>
+          </div>
+        </section>
       </main>
     </>
   );
@@ -38,10 +73,11 @@ export function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
-  const { getPostBySlug } = await useServiceQuery();
+  const { getPostBySlug, getFourPostsByType } = await useServiceQuery();
   const { slug } = params as { slug: string };
 
   const postResponse = await getPostBySlug(slug);
+  const postTypeResponse = await getFourPostsByType(postResponse?.postType);
 
   if (!postResponse) {
     return {
@@ -52,6 +88,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
   return {
     props: {
       post: postResponse,
+      blogData: postTypeResponse,
     },
     revalidate: 60 * 60 * 1, // 1 hour
   };
