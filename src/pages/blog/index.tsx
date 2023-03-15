@@ -1,12 +1,25 @@
 // Components
+import { CardBlogCarousel } from "@/components/CardBlogCarousel/CardBlog";
+import { Post } from "@/interfaces";
+import { useServiceQuery } from "@/Utilities/Services";
 import Head from "next/head";
 import Image from "next/image";
-
+import Link from "next/link";
 
 // Utilities
 // Interfaces
+interface BlogProps {
+  blogDataDicas: Post[];
+  blogDataItalia: Post[];
+  blogDataPortugal: Post[];
+}
 
-export default function Blog() {
+export default function Blog({
+  blogDataDicas,
+  blogDataItalia,
+  blogDataPortugal,
+}: BlogProps) {
+  console.log(blogDataDicas);
   return (
     <>
       <Head>
@@ -45,7 +58,108 @@ export default function Blog() {
             />
           </div>
         </section>
+
+        <section className="my-16">
+          <div className="flex flex-col container items-center lg:items-stretch">
+            <div className="text-center lg:text-start flex items-center">
+              <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
+                <span className=" text-green-500 font-medium">
+                  Dicas Imigrei
+                </span>
+                <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+                  Conteúdo rápido e informativo
+                </h2>
+              </div>
+              <Link
+                href="/blog/dicas"
+                className="hidden lg:block button ml-auto"
+              >
+                Ver Todos
+              </Link>
+            </div>
+            <div className="container lg:px-0">
+              <CardBlogCarousel blogData={blogDataDicas} />
+            </div>
+
+            <Link href="/blog/dicas" className="lg:hidden button mt-5 ">
+              Ver Todos
+            </Link>
+          </div>
+        </section>
+        <section className="my-16">
+          <div className="flex flex-col container items-center lg:items-stretch">
+            <div className="text-center lg:text-start flex items-center">
+              <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
+                <span className=" text-green-500 font-medium">Portugal</span>
+                <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+                  Portugal, aí vamos nós!
+                </h2>
+              </div>
+              <Link
+                href="/blog/portugal"
+                className="hidden lg:block button ml-auto"
+              >
+                Ver Todos
+              </Link>
+            </div>
+            <div className="container lg:px-0">
+              <CardBlogCarousel blogData={blogDataPortugal} />
+            </div>
+
+            <Link href="/blog/portugal" className="lg:hidden button mt-5 ">
+              Ver Todos
+            </Link>
+          </div>
+        </section>
+        <section className="my-16">
+          <div className="flex flex-col container items-center lg:items-stretch">
+            <div className="text-center lg:text-start flex items-center">
+              <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
+                <span className=" text-green-500 font-medium">Portugal</span>
+                <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+                  Italia, aí vamos nós!
+                </h2>
+              </div>
+              <Link
+                href="/blog/italia"
+                className="hidden lg:block button ml-auto"
+              >
+                Ver Todos
+              </Link>
+            </div>
+            <div className="container lg:px-0">
+              <CardBlogCarousel blogData={blogDataItalia} />
+            </div>
+
+            <Link href="/blog/italia" className="lg:hidden button mt-5 ">
+              Ver Todos
+            </Link>
+          </div>
+        </section>
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const { getFourPostsByType } = await useServiceQuery();
+
+  const postTypeResponseDicas = await getFourPostsByType("dicas");
+  const postTypeResponseItalia = await getFourPostsByType("italia");
+  const postTypeResponsePortugal = await getFourPostsByType("portugal");
+
+  if (!postTypeResponseDicas) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      blogDataDicas: postTypeResponseDicas,
+      blogDataItalia: postTypeResponseItalia,
+      blogDataPortugal: postTypeResponsePortugal,
+    },
+    revalidate: 60 * 60 * 1, // 1 hour
+  };
 }
