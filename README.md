@@ -1,11 +1,11 @@
 <div align="center" id="top">
-  <img src="./public/Thumbnail.png" alt="pagina home" />
+  <img src="./public/Thumbnail.png" alt="Thumbnail do site" />
 
 &#xa0;
 
 </div>
 
-<h1 align="center">Site Imigrei</h1>
+<h1 align="center">Site Institucional</h1>
 
 <h4 align="center">
 	🚧   Under construction...  🚧
@@ -14,9 +14,9 @@
 
 <p align="center">
   <a href="#-sobre">Sobre</a> &#xa0; | &#xa0;
-  <a href="#skateboard-funcionalidades">Funcionalidades</a> &#xa0; | &#xa0;
-  <a href="#rocket-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requisitos-para-rodar-a-aplicação">Requisitos</a> &#xa0; | &#xa0;
+  <a href="#-funcionalidades">Funcionalidades</a> &#xa0; | &#xa0;
+  <a href="#-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
+  <a href="#-requisitos-para-rodar-a-aplicação">Requisitos</a> &#xa0; | &#xa0;
   <a href="https://github.com/joaotelesk" target="_blank">Autor</a>
 </p>
 
@@ -54,6 +54,8 @@ Links:
 ✔️ Buscar Posts por atulização
 
 ✔️ Buscar Post por slug
+
+✔️ Buscar Post os 4 últimos Post por categoria
 
 ✔️ Enviar subscrição de e-mail
 
