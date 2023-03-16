@@ -114,4 +114,12 @@
       rgba(227, 241, 228, 0) 75%
     );
   }
+  .box-banner {
+    background: linear-gradient(
+      0deg,
+      rgba(227, 241, 228, 1) 0%,
+      rgba(227, 241, 228, 1) 90%,
+      rgba(227, 241, 228, 0) 90%
+    );
+  }
 }
