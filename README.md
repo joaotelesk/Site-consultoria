@@ -55,7 +55,9 @@ Links:
 
 ✔️ Buscar Post por slug
 
-✔️ Buscar Post os 4 últimos Post por categoria
+✔️ Buscar os 4 últimos Post por categoria
+
+✔️ Buscar os 4 últimos Post por criados
 
 ✔️ Enviar subscrição de e-mail
 
