@@ -24,8 +24,8 @@ const PageSlug: NextPage<PageSlugProps> = ({ post, blogData }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <PostContent post={post} />
       <main className="w-full min-h-screen py-0 ">
+        <PostContent post={post} />
         <section className="mb-16">
           <div className="flex flex-col container items-center lg:items-stretch">
             <div className="text-center lg:text-start flex items-center">

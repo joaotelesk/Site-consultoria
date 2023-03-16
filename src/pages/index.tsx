@@ -102,7 +102,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               <h1 className="mt-4 text-3xl font-medium  lg:text-5xl text-black-500">
                 Assessoria de imigração para Portugal e Itália
               </h1>
-              <p className="mx-auto mt-4 lg:mt-3 text-gray-300 text-sm lg:text-xl max-w-md lg:ml-0">
+              <p className="mx-auto mt-4 lg:mt-3 text-gray-300 text-sm lg:text-xl max-w-md lg:ml-0  lg:leading-6">
                 Conquiste sua cidadania sem se preocupar com burocracias.
                 Economize tempo e dinheiro com com a Imigrei!
               </p>
@@ -140,7 +140,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
                 Prazer, somos a Imigrei!
               </h2>
-              <p className="text-sm sm:text-base mt-4 text-gray-300">
+              <p className="text-sm sm:text-base mt-4 text-gray-300 lg:leading-5">
                 Oferecemos uma variedade de serviços para os nossos assessorados
                 que buscam o sonho de viver em Portugal e Itália! Oferecemos uma
                 variedade de serviços para os nossos assessorados que buscam o
@@ -161,7 +161,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
             <h2 className="mt-2  text-2xl sm:text-4xl text-black-400 font-medium">
               Conheça as nossas áreas de atuação
             </h2>
-            <p className="text-sm sm:text-base mt-4 text-gray-300 mx-auto max-w-xl ">
+            <p className="text-sm sm:text-base mt-4 text-gray-300 mx-auto max-w-xl  lg:leading-5 ">
               Oferecemos uma variedade de serviços para os nossos assessorados
               que buscam o sonho de viver em Portugal e Itália!
             </p>
@@ -216,7 +216,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
                 <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
                   Conteúdo de qualidade para imigrantes
                 </h2>
-                <p className="text-sm sm:text-base mt-4 text-gray-300">
+                <p className="text-sm sm:text-base mt-4 text-gray-300  lg:leading-5">
                   Oferecemos uma variedade de serviços para os nossos
                   assessorados que buscam o sonho de viver em Portugal e Itália!
                 </p>
@@ -242,7 +242,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
                 <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
                   Fale com a Imigrei
                 </h2>
-                <p className="text-sm sm:text-base mt-4 text-gray-500">
+                <p className="text-sm sm:text-base mt-4 text-gray-500 lg:leading-5">
                   Preencha o formulário com os seus melhores contatos que
                   retornaremos o mais breve possível!
                 </p>

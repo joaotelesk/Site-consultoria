@@ -33,7 +33,7 @@ export function Carousel({ serviceData }: CarouselProps) {
                 <h3 className="text-base sm:text-xl font-medium text-black-400">
                   {service.title}
                 </h3>
-                <p className="mt-2 text-sm sm:text-base text-gray-300">
+                <p className="mt-2 text-sm sm:text-base text-gray-300  lg:leading-5">
                   {service.description}
                 </p>
                 <Link

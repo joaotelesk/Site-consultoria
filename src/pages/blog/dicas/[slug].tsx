@@ -26,7 +26,6 @@ const PageSlug: NextPage<PageSlugProps> = ({ post, blogData }) => {
       </Head>
       <main className="w-full min-h-screen py-0 ">
         <PostContent post={post} />
-
         <section className="mb-16">
           <div className="flex flex-col container items-center lg:items-stretch">
             <div className="text-center lg:text-start flex items-center">

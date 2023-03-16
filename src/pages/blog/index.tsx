@@ -76,7 +76,7 @@ const Blog: NextPage<BlogProps> = ({
                   className="mx-auto lg:ml-0 order-1 lg:order-2"
                 />
               </div>
-              <p className="mx-auto mt-4 lg:mt-6 text-green-300 text-sm lg:text-xl max-w-md lg:ml-0">
+              <p className="mx-auto mt-4 lg:mt-6 text-green-300 text-sm lg:text-xl max-w-md lg:ml-0  lg:leading-6">
                 Dicas e conteúdo de qualidade criado por quem te deseja a melhor
                 experiência de imigração para a Itália e Portugal!
               </p>
@@ -202,7 +202,7 @@ const Blog: NextPage<BlogProps> = ({
             />
           </div>
         </section>
-        <section className="my-16">
+        <section className="my-8">
           <div className="flex flex-col container items-center lg:items-stretch">
             <div className="text-center lg:text-start flex items-center">
               <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
@@ -227,7 +227,7 @@ const Blog: NextPage<BlogProps> = ({
             </Link>
           </div>
         </section>
-        <section className="my-16">
+        <section className="my-8">
           <div className="flex flex-col container items-center lg:items-stretch">
             <div className="text-center lg:text-start flex items-center">
               <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
