@@ -91,7 +91,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
       <main className="w-full min-h-screen py-0 ">
         <section className=" text-center lg:text-start items-center bg-green-400  pt-16 lg:pt-24">
           <div className=" container grid grid-cols-1 lg:grid-flow-col lg:gap-x-16 ">
-            <div className=" py-4 lg:py-16  flex flex-col ">
+            <div className=" py-5 lg:py-16  flex flex-col ">
               <Image
                 src="/Home/bandeiras.png"
                 alt="Bandeiras de portugal e italia"
@@ -118,7 +118,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               alt="Imagem banner principal"
               width={426}
               height={418}
-              className="self-end mx-full ml-5 pt-10 lg:pt-0"
+              className="self-end mx-full ml-2 pt-10 lg:pt-0"
               priority
             />
           </div>

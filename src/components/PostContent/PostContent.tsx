@@ -96,7 +96,7 @@ export default function PostContent({ post }: PostContentProps) {
                 {updatedDate}
               </p>
               <p className="text-gray-300 ">
-                <span className="text-black-400">Escrito</span> por
+                <span className="text-black-400">Escrito</span> por{" "}
                 {convertStringUpcase(author)}
               </p>
             </div>

@@ -33,7 +33,7 @@ export function CardBlogCarousel({ blogData }: CardBlogProps) {
               <h3 className="text-base sm:text-xl font-medium text-black-400">
                 {convertStringCharacters(item.title, 20)}
               </h3>
-              <p className="text-sm sm:text-base text-gray-300">
+              <p className="text-sm sm:text-base text-gray-300 lg:leading-5">
                 {convertStringCharacters(item.description, 85)}...
               </p>
               <Link
