@@ -35,3 +35,16 @@ export function convertImage({ name, attribs }: any) {
   }
   return null;
 }
+
+export const convertDateCard = (date: Date | string) => {
+  const formatted = format(new Date(date), `dd MMM yyyy`, {
+    locale: ptBR,
+  });
+
+  const newFormatted = formatted
+    .split(" ")
+    .map((word, index) => (index === 1 ? word.toUpperCase() : word))
+    .join(" ");
+
+  return newFormatted;
+};
