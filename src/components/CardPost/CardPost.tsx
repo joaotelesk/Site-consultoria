@@ -3,6 +3,7 @@ import {
   convertDateCard,
   convertDatePost,
   convertStringCharacters,
+  convertStringUpcase,
 } from "@/Utilities/Convert";
 import Image from "next/image";
 import Link from "next/link";
@@ -57,7 +58,13 @@ export default function CardPost({ type, category, blogData }: cardPost) {
           <div>
             <div className="flex  gap-x-5 text-xs lg:text-base">
               <p>{createdDate}</p>
-              {category ? <p className="text-black-400">{category}</p> : ""}
+              {category ? (
+                <p className="text-black-400">
+                  {convertStringUpcase(category)}
+                </p>
+              ) : (
+                ""
+              )}
             </div>
             <h2
               className={`text-black-400  text-base lg:mt-2 leading-8 font-medium ${
@@ -83,7 +90,7 @@ export default function CardPost({ type, category, blogData }: cardPost) {
           <div>
             <div className="flex   gap-x-5 text-xs lg:text-sm">
               <p>{createdDate}</p>
-              <p className="text-black-400">{postType}</p>
+              <p className="text-black-400">{convertStringUpcase(postType)}</p>
             </div>
             <h2 className="text-black-400 lg:mt-1 text-base lg:text-2xl lg:leading-6 font-medium ">
               {title}
