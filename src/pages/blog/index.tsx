@@ -231,7 +231,7 @@ const Blog: NextPage<BlogProps> = ({
           <div className="flex flex-col container items-center lg:items-stretch">
             <div className="text-center lg:text-start flex items-center">
               <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
-                <span className=" text-green-500 font-medium">Portugal</span>
+                <span className=" text-green-500 font-medium">Italia</span>
                 <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
                   Italia, aí vamos nós!
                 </h2>
