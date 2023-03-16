@@ -1,25 +1,57 @@
 // Components
 import { CardBlogCarousel } from "@/components/CardBlogCarousel/CardBlog";
+import CardPost from "@/components/CardPost/CardPost";
 import { Post } from "@/interfaces";
-import { useServiceQuery } from "@/Utilities/Services";
+import { useServiceMutation, useServiceQuery } from "@/Utilities/Services";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
 // Utilities
+import { NextPage } from "next";
+import { TextInput } from "@/components/InputText/InputText";
+import { useState } from "react";
+import { useToast } from "@chakra-ui/react";
+import { emailRegex } from "@/Utilities/Variables";
+
 // Interfaces
 interface BlogProps {
   blogDataDicas: Post[];
   blogDataItalia: Post[];
   blogDataPortugal: Post[];
+  blogData: Post[];
 }
 
-export default function Blog({
+const Blog: NextPage<BlogProps> = ({
+  blogData,
   blogDataDicas,
   blogDataItalia,
   blogDataPortugal,
-}: BlogProps) {
-  console.log(blogDataDicas);
+}) => {
+  const [subscribeValue, setSubscribeValue] = useState("");
+  const { subscribeEmail, loading } = useServiceMutation();
+  const toast = useToast();
+
+  async function handleSubscribeSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    if (subscribeValue !== "" && emailRegex.test(subscribeValue)) {
+      await subscribeEmail(subscribeValue);
+      setSubscribeValue("");
+    } else {
+      toast({
+        title: "Erro",
+        position: "top",
+        description: "Preencha o campo de e-mail.",
+        status: "info",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  }
+
+  function handleSubscribeChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSubscribeValue(event.target.value);
+  }
   return (
     <>
       <Head>
@@ -29,7 +61,7 @@ export default function Blog({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="w-full min-h-screen py-0">
-        <section className=" text-center lg:text-start items-center bg-blog bg-cover pt-28 lg:pt-0 lg:mt-28">
+        <section className=" text-center lg:text-start items-center bg-blog bg-cover pt-16 lg:pt-0 lg:mt-28">
           <div className="container grid grid-cols-1 lg:grid-cols-2 lg:gap-x-11">
             <div className="py-7 lg:py-16 flex flex-col">
               <div className=" flex flex-col lg:flex-row items-center lg:items-end gap-5">
@@ -54,12 +86,67 @@ export default function Blog({
               alt="Imagem banner principal"
               width={352}
               height={283}
-              className="self-end mx-auto"
+              className="self-end mx-auto mt-5"
             />
           </div>
         </section>
+        <section className="container my-11">
+          <h2 className="font-medium text-black-400 text-2xl lg:text-4xl text-center lg:text-start my-9 ">
+            Últimos Posts
+          </h2>
 
-        <section className="my-16">
+          <div className=" grid gap-y-9  grid-cols-1 lg:grid-cols-5  lg:gap-y-0 lg:gap-x-2">
+            <div className=" lg:col-span-3">
+              <CardPost
+                type="primary"
+                category={blogData[0].postType}
+                blogData={blogData[0]}
+              />
+            </div>
+            <div className=" flex flex-col gap-5 lg:col-span-2">
+              <CardPost type="variante" blogData={blogData[1]} />
+              <CardPost type="variante" blogData={blogData[2]} />
+              <CardPost type="variante" blogData={blogData[3]} />
+            </div>
+          </div>
+        </section>
+        <section className="lg:container">
+          <div className="container my-10 text-center text-gray-500 bg-subscribeSm lg:bg-subscribeLg bg-cover py-14 lg:my-20">
+            <span className="mt-7 text-green-500 font-medium">Newsletter</span>
+            <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+              Fique por dentro das nossas atualizações!
+            </h2>
+            <p className="text-sm sm:text-base mt-4 text-gray-300">
+              Saiba o que acontece no mundo da imigrações e cidadania em
+              Portugal e Itália.
+            </p>
+
+            <form
+              onSubmit={handleSubscribeSubmit}
+              className="flex flex-col items-center lg:items-baseline gap-5  mt-8 justify-center max-w-md mx-auto lg:flex-row"
+            >
+              <div className="w-64">
+                <TextInput.Root>
+                  <TextInput.Input
+                    type="email"
+                    value={subscribeValue}
+                    placeholder="Digite o seu melhor E-mail"
+                    onChange={handleSubscribeChange}
+                  />
+                </TextInput.Root>
+              </div>
+
+              <button
+                type="submit"
+                className="linkButton text-sm lg:text-base mt-4"
+                disabled={loading}
+              >
+                Cadastrar
+              </button>
+            </form>
+          </div>
+        </section>
+        <section className="my-8">
           <div className="flex flex-col container items-center lg:items-stretch">
             <div className="text-center lg:text-start flex items-center">
               <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
@@ -84,6 +171,35 @@ export default function Blog({
             <Link href="/blog/dicas" className="lg:hidden button mt-5 ">
               Ver Todos
             </Link>
+          </div>
+        </section>
+        <section className="lg:container">
+          <div className="text-center lg:text-start container grid grid-cols-1 lg:grid-cols-5 items-center lg:gap-16 lg:my-16 box-banner">
+            <div className="col-span-3 px-10 py-10 flex flex-col">
+              <span className=" mt-16 lg:mt-8 text-green-500 font-medium">
+                Website
+              </span>
+              <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium lg:leading-9">
+                Precisando de auxílio com a sua imigração? Conheça melhor a
+                Imigrei!
+              </h2>
+              <p className="text-sm sm:text-base mt-4 text-gray-300">
+                Clique no botão abaixo e conheça o nosso site!
+              </p>
+              <Link
+                href="#"
+                className="text-sm sm:text-base linkButton self-center lg:self-start my-4"
+              >
+                Ver site Imigrei
+              </Link>
+            </div>
+            <Image
+              src="/banner-woman.png"
+              alt="imagem de uma mulher sorrindo"
+              width={345}
+              height={362}
+              className=" mx-auto col-span-2"
+            />
           </div>
         </section>
         <section className="my-16">
@@ -139,16 +255,20 @@ export default function Blog({
       </main>
     </>
   );
-}
+};
+
+export default Blog;
 
 export async function getStaticProps() {
-  const { getFourPostsByType } = await useServiceQuery();
+  const { getFourPostsByType, getFirstFourPostsByCreate } =
+    await useServiceQuery();
 
+  const blogData = await getFirstFourPostsByCreate();
   const postTypeResponseDicas = await getFourPostsByType("dicas");
   const postTypeResponseItalia = await getFourPostsByType("italia");
   const postTypeResponsePortugal = await getFourPostsByType("portugal");
 
-  if (!postTypeResponseDicas) {
+  if (!blogData) {
     return {
       notFound: true,
     };
@@ -159,6 +279,7 @@ export async function getStaticProps() {
       blogDataDicas: postTypeResponseDicas,
       blogDataItalia: postTypeResponseItalia,
       blogDataPortugal: postTypeResponsePortugal,
+      blogData,
     },
     revalidate: 60 * 60 * 1, // 1 hour
   };
