@@ -1,7 +1,49 @@
+// Components
+import CardPost from "@/components/CardPost/CardPost";
+import { TextInput } from "@/components/InputText/InputText";
+import { Post } from "@/interfaces";
+import { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 
-export default function ItaliaPage() {
+// Utilities
+import { useServiceMutation, useServiceQuery } from "@/Utilities/Services";
+import { emailRegex } from "@/Utilities/Variables";
+import { useToast } from "@chakra-ui/react";
+
+// Hooks
+import { useState } from "react";
+
+// Interfaces
+interface ItaliaPageProps {
+  blogData: Post[];
+}
+
+const ItaliaPage: NextPage<ItaliaPageProps> = ({ blogData }) => {
+  const [subscribeValue, setSubscribeValue] = useState("");
+  const { subscribeEmail, loading } = useServiceMutation();
+  const toast = useToast();
+
+  async function handleSubscribeSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    if (subscribeValue !== "" && emailRegex.test(subscribeValue)) {
+      await subscribeEmail(subscribeValue);
+      setSubscribeValue("");
+    } else {
+      toast({
+        title: "Erro",
+        position: "top",
+        description: "Preencha o campo de e-mail.",
+        status: "info",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  }
+
+  function handleSubscribeChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSubscribeValue(event.target.value);
+  }
+
   return (
     <>
       <Head>
@@ -11,36 +53,82 @@ export default function ItaliaPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="w-full min-h-screen py-0">
-        <section className=" text-center lg:text-start items-center bg-blog bg-cover pt-28 lg:pt-0 lg:mt-28">
-          <div className="container grid grid-cols-1 lg:grid-cols-2 lg:gap-x-11">
-            <div className="py-7 lg:py-16 flex flex-col">
-              <div className=" flex flex-col lg:flex-row items-center lg:items-end gap-5">
-                <h1 className="mt-4 text-3xl font-medium  lg:text-5xl text-green-500 flex gap-4 order-2 lg:order-1">
-                  Italia
-                </h1>
-                <Image
-                  src="/Home/bandeiras.png"
-                  alt="Bandeiras de portugal e italia"
-                  width={75}
-                  height={35}
-                  className="mx-auto lg:ml-0 order-1 lg:order-2"
-                />
-              </div>
-              <p className="mx-auto mt-4 lg:mt-6 text-green-300 text-sm lg:text-xl max-w-md lg:ml-0">
-                Dicas e conteúdo de qualidade criado por quem te deseja a melhor
-                experiência de imigração para a Itália e Portugal!
-              </p>
+        <section className=" text-center lg:text-start items-center bg-green-400 pt-28 lg:pt-0 lg:mt-28">
+          <div className="container">
+            <div className=" flex flex-col items-center gap-10">
+              <h1 className="my-7 lg:my-16 text-3xl font-medium  lg:text-5xl text-green-500 flex gap-4">
+                Italia
+              </h1>
             </div>
-            <Image
-              src="/Blog/banner.png"
-              alt="Imagem banner principal"
-              width={352}
-              height={283}
-              className="self-end mx-auto"
-            />
+          </div>
+        </section>
+        <section className="flex justify-center bg-blog">
+          <div className="container flex flex-wrap gap-x-2  content-center gap-y-16 justify-self-center lg:justify-between">
+            {blogData.map((item, index) => (
+              <div key={index}>
+                <CardPost blogData={item} type="primary" />
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="container ">
+          <div className="container my-10 text-center text-gray-500 bg-subscribeSm lg:bg-subscribeLg bg-cover py-14 lg:my-20">
+            <span className="mt-7 text-green-500 font-medium">Newsletter</span>
+            <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+              Fique por dentro das nossas atualizações!
+            </h2>
+            <p className="text-sm sm:text-base mt-4 text-gray-300">
+              Saiba o que acontece no mundo da imigrações e cidadania em
+              Portugal e Itália.
+            </p>
+
+            <form
+              onSubmit={handleSubscribeSubmit}
+              className="flex flex-col items-center lg:items-baseline gap-5  mt-8 justify-center max-w-md mx-auto lg:flex-row"
+            >
+              <div className="w-64">
+                <TextInput.Root>
+                  <TextInput.Input
+                    type="email"
+                    value={subscribeValue}
+                    placeholder="Digite o seu melhor E-mail"
+                    onChange={handleSubscribeChange}
+                  />
+                </TextInput.Root>
+              </div>
+
+              <button
+                type="submit"
+                className="linkButton text-sm lg:text-base mt-4"
+                disabled={loading}
+              >
+                Cadastrar
+              </button>
+            </form>
           </div>
         </section>
       </main>
     </>
   );
+};
+
+export default ItaliaPage;
+
+export async function getStaticProps() {
+  const { getAllPostsByType } = await useServiceQuery();
+
+  const blogData = await getAllPostsByType("italia");
+
+  if (!blogData) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      blogData,
+    },
+    revalidate: 60 * 60 * 1, // 1 hour
+  };
 }
