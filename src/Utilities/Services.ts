@@ -10,6 +10,7 @@ import {
   GET_FIRST_FOUR_POSTS_BY_TYPE_QUERY,
   GET_POST_BY_SLUG_QUERY,
   GET_FIRST_FOUR_POSTS_BY_CREATE_QUERY,
+  GET_ALL_POSTS_BY_TYPE_QUERY,
 } from "@/graphql/queries/query";
 import { Post } from "@/interfaces";
 
@@ -126,6 +127,21 @@ export const useServiceQuery = async () => {
     });
     return data.posts;
   };
+  const getAllPostsByType = async (postType: String | any) => {
+    const { data } = await client.query<{ posts: Post[] }>({
+      query: GET_ALL_POSTS_BY_TYPE_QUERY,
+      variables: {
+        postType: postType,
+      },
+    });
+    return data.posts;
+  };
 
-  return { getFirstFourPosts, getPostBySlug, getFourPostsByType, getFirstFourPostsByCreate };
+  return {
+    getFirstFourPosts,
+    getPostBySlug,
+    getFourPostsByType,
+    getFirstFourPostsByCreate,
+    getAllPostsByType,
+  };
 };
