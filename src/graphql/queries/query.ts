@@ -44,10 +44,22 @@ export const GET_FIRST_FOUR_POSTS_BY_TYPE_QUERY = gql`
   }
 `;
 
-
 export const GET_FIRST_FOUR_POSTS_BY_CREATE_QUERY = gql`
   query {
     posts(orderBy: createdAt_DESC, first: 4) {
+      title
+      description
+      slug
+      thumbnail
+      thumbnailDescription
+      postType
+      createdAt
+    }
+  }
+`;
+export const GET_ALL_POSTS_BY_TYPE_QUERY = gql`
+  query GetPostsByType($postType: PostType!) {
+    posts(where: { postType: $postType }, orderBy: createdAt_DESC) {
       title
       description
       slug
