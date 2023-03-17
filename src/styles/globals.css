@@ -122,7 +122,7 @@
       rgba(227, 241, 228, 0) 90%
     );
   }
-  .bg-blog {
+  .bg-blogPages {
     background: linear-gradient(
       0deg,
       rgba(227, 241, 228, 0) 85%,
@@ -131,7 +131,7 @@
     );
   }
   @media (max-width: 984px) {
-    .bg-blog {
+    .bg-blogPages {
       background: linear-gradient(
         0deg,
         rgba(227, 241, 228, 0) 90%,

@@ -62,7 +62,7 @@ const DicasPage: NextPage<DicasPageProps> = ({ blogData }) => {
             </div>
           </div>
         </section>
-        <section className="flex justify-center bg-blog">
+        <section className="flex justify-center bg-blogPages">
           <div className="container flex flex-wrap gap-x-2  content-center gap-y-16 justify-self-center lg:justify-between">
             {blogData.map((item, index) => (
               <div key={index}>
