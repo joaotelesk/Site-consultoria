@@ -33,7 +33,7 @@ export default function CardPost({ type, category, blogData }: cardPost) {
           className={`flex flex-col w-auto ${
             category
               ? "lg:max-h-[526px] max-w-[585px]"
-              : "lg:max-h-[593px] max-w-[360px]"
+              : "h-auto lg:max-h-[593px] w-full lg:max-w-[330px]"
           } gap-6 text-gray-300`}
         >
           {category ? (
@@ -49,9 +49,9 @@ export default function CardPost({ type, category, blogData }: cardPost) {
             <Image
               src={`${blogData.thumbnail}`}
               alt={`${thumbnailDescription}`}
-              width={360}
-              height={360}
-              className=" max-h-[300px] max-w-[360px]"
+              width={320}
+              height={320}
+              className="h-[360px] lg:max-h-[320px] w-auto"
               priority
             />
           )}
