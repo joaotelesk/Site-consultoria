@@ -58,20 +58,14 @@ export default function CardPost({ type, category, blogData }: cardPost) {
           <div>
             <div className="flex  gap-x-5 text-xs lg:text-base">
               <p>{createdDate}</p>
-              {category ? (
-                <p className="text-black-400">
-                  {convertStringUpcase(category)}
-                </p>
-              ) : (
-                ""
-              )}
+              <p className="text-black-400">{convertStringUpcase(postType)}</p>
             </div>
             <h2
               className={`text-black-400  text-base lg:mt-2 leading-8 font-medium ${
                 category ? "lg:text-[32px] " : "lg:text-2xl"
               }`}
             >
-              {title}
+              {convertStringCharacters(title, 18)}
             </h2>
             <p className="lg:mt-3 text-sm lg:text-xl lg:leading-6 ">
               {convertStringCharacters(description, 100)}...
