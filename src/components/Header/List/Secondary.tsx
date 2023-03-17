@@ -82,13 +82,13 @@ export function ListSecondary() {
                 />
               </div>
               <ul className="mt-8 flex flex-col gap-4 font-medium">
-                <li className="MenuLi">
-                  <Link href="/blog/dicas"></Link> Dicas Imigrei
+                <li className="MenuLi" onClick={handleClose}>
+                  <Link href="/blog/dicas">Dicas Imigrei</Link>
                 </li>
-                <li className="MenuLi">
+                <li className="MenuLi" onClick={handleClose}>
                   <Link href="/blog/italia">Italia</Link>
                 </li>
-                <li className="MenuLi">
+                <li className="MenuLi" onClick={handleClose}>
                   <Link href="/blog/portugal">Portugal</Link>
                 </li>
               </ul>
