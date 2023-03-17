@@ -36,7 +36,8 @@ export function Header() {
             />
           </Link>
           <nav className="flex items-center text-xl gap-20 text-green-500">
-            {router.asPath.startsWith("/blog") ? (
+            {router.asPath === "/blog/" ||
+            router.asPath.startsWith("/blog/") ? (
               <ListSecondary />
             ) : (
               <ListPrimary />

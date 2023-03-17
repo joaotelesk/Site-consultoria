@@ -30,7 +30,9 @@ export function ListSecondary() {
 
   function handleNavClass(path: string) {
     const currentPath = router.pathname;
-    return currentPath === path ? "border-b border-blue-500 text-blue-500" : "";
+    return currentPath.startsWith(path)
+      ? "border-b border-blue-500 text-blue-500"
+      : "";
   }
 
   function handleSearchClick() {
@@ -80,9 +82,15 @@ export function ListSecondary() {
                 />
               </div>
               <ul className="mt-8 flex flex-col gap-4 font-medium">
-                <li className="MenuLi">Dicas Imigrei</li>
-                <li className="MenuLi">Italia</li>
-                <li className="MenuLi"> Portugal</li>
+                <li className="MenuLi">
+                  <Link href="/blog/dicas"></Link> Dicas Imigrei
+                </li>
+                <li className="MenuLi">
+                  <Link href="/blog/italia">Italia</Link>
+                </li>
+                <li className="MenuLi">
+                  <Link href="/blog/portugal">Portugal</Link>
+                </li>
               </ul>
               <Link className="linkButton mt-10" href="#">
                 Contato
@@ -121,18 +129,18 @@ export function ListSecondary() {
         ) : (
           <>
             <ul className="flex items-center gap-14">
-              <li>
-                <Link href="#" className="link">
+              <li className={handleNavClass("/blog/dicas")}>
+                <Link href="/blog/dicas" className="link">
                   Dicas Imigrei
                 </Link>
               </li>
-              <li>
-                <Link href="#" className="link">
+              <li className={handleNavClass("/blog/italia")}>
+                <Link href="/blog/italia" className="link">
                   Italia
                 </Link>
               </li>
-              <li>
-                <Link href="#" className="link">
+              <li className={handleNavClass("/blog/portugal")}>
+                <Link href="/blog/portugal" className="link">
                   Portugal
                 </Link>
               </li>

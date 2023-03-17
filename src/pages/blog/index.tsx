@@ -187,7 +187,7 @@ const Blog: NextPage<BlogProps> = ({
                 Clique no botão abaixo e conheça o nosso site!
               </p>
               <Link
-                href="#"
+                href="/"
                 className="text-sm sm:text-base linkButton self-center lg:self-start my-4"
               >
                 Ver site Imigrei

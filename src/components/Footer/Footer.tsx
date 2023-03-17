@@ -49,7 +49,7 @@ export default function Footer() {
           <h3 className="text-xl text-white-500 font-bold ">Navegue</h3>
           <ul className="mt-4 flex flex-col gap-3 ">
             <li>
-              <Link href="#" arial-label="Pagina Home">
+              <Link href="/" arial-label="Pagina Home">
                 Home
               </Link>
             </li>
@@ -64,7 +64,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="#" arial-label="Pagina Blog">
+              <Link href="/blog" arial-label="Pagina Blog">
                 Blog
               </Link>
             </li>
