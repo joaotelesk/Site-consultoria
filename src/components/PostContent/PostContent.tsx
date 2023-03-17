@@ -122,10 +122,10 @@ export default function PostContent({ post }: PostContentProps) {
           <div className="hidden lg:block  lg:col-span-2">
             <div className="h-auto bg-white-400 flex flex-col px-5 py-10">
               <span className="mt-4 text-green-500 font-medium">Website</span>
-              <h2 className="mt-2 text-4xl text-black-400 font-medium">
+              <h2 className="mt-2 text-4xl text-black-400 font-medium leading-8">
                 Conheça as novidades do website da Imigrei!
               </h2>
-              <p className="text-base  mt-5 text-gray-300">
+              <p className="text-base  mt-5 text-gray-300 lg:leading-5">
                 Clique no botão abaixo para ser redirecionado!
               </p>
               <Link
