@@ -122,4 +122,22 @@
       rgba(227, 241, 228, 0) 90%
     );
   }
+  .bg-blog {
+    background: linear-gradient(
+      0deg,
+      rgba(227, 241, 228, 0) 85%,
+      rgba(227, 241, 228, 1) 85%,
+      rgba(227, 241, 228, 1) 0%
+    );
+  }
+  @media (max-width: 984px) {
+    .bg-blog {
+      background: linear-gradient(
+        0deg,
+        rgba(227, 241, 228, 0) 90%,
+        rgba(227, 241, 228, 1) 90%,
+        rgba(227, 241, 228, 1) 0%
+      );
+    }
+  }
 }
