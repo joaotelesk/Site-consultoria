@@ -297,7 +297,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               </div>
               <Image
                 alt="mulher de camisa listrada sorridente"
-                src="/Home/contato.png"
+                src="/Home/contato.svg"
                 width={406}
                 height={596}
                 className="hidden lg:block self-end"
