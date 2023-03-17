@@ -1,7 +1,18 @@
+import CardPost from "@/components/CardPost/CardPost";
+import { Post } from "@/interfaces";
+import { useServiceQuery } from "@/Utilities/Services";
+import { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { type } from "os";
 
-export default function DicasPage() {
+// Interfaces
+interface DicasPageProps {
+  blogData: Post[];
+}
+
+const DicasPage: NextPage<DicasPageProps> = ({ blogData }) => {
+  console.log(blogData);
   return (
     <>
       <Head>
@@ -40,7 +51,35 @@ export default function DicasPage() {
             />
           </div>
         </section>
+        <section className="container flex flex-wrap gap-x-3 gap-y-16 justify-center lg:px-4">
+          {blogData.map((item, index) => (
+            <div key={index}>
+              <CardPost blogData={item} type="primary" />
+            </div>
+          ))}
+        </section>
       </main>
     </>
   );
+};
+
+export default DicasPage;
+
+export async function getStaticProps() {
+  const { getAllPostsByType } = await useServiceQuery();
+
+  const blogData = await getAllPostsByType("dicas");
+
+  if (!blogData) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      blogData,
+    },
+    revalidate: 60 * 60 * 1, // 1 hour
+  };
 }
