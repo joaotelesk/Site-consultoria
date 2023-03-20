@@ -86,20 +86,20 @@ const DicasPage: NextPage<DicasPageProps> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="w-full min-h-screen py-0">
-        <section className=" text-center lg:text-start items-center bg-green-400 pt-28 lg:pt-0 lg:mt-28">
+        <section className=" text-center lg:text-start items-center bg-green-400 pt-7 lg:pt-0 lg:mt-28">
           <div className="container">
             <div className=" flex flex-col items-center gap-5">
               <h1 className="mt-20 text-3xl font-medium  lg:text-5xl text-green-500 flex gap-4">
                 Dicas Imigrei
               </h1>
-              <div className="my-5">
+              <div className="mb-5">
                 <Filter onClick={handleSelected} />
               </div>
             </div>
           </div>
         </section>
         <section className="flex justify-center bg-blogPages">
-          <div className="container flex flex-wrap gap-x-2  content-center gap-y-16 justify-self-center lg:justify-between">
+          <div className="container flex flex-wrap gap-x-2  content-center gap-y-6 lg:gap-y-16 justify-self-center lg:justify-between">
             {blogdata.map((item, index) => (
               <div key={index}>
                 <CardPost blogData={item} type="primary" />
