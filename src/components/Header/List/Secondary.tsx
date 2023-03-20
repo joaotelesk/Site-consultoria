@@ -82,15 +82,22 @@ export function ListSecondary() {
                 />
               </div>
               <ul className="mt-8 flex flex-col gap-4 font-medium">
-                <li className="MenuLi" onClick={handleClose}>
-                  <Link href="/blog/dicas">Dicas Imigrei</Link>
-                </li>
-                <li className="MenuLi" onClick={handleClose}>
-                  <Link href="/blog/italia">Italia</Link>
-                </li>
-                <li className="MenuLi" onClick={handleClose}>
-                  <Link href="/blog/portugal">Portugal</Link>
-                </li>
+                <Link href="/blog/dicas">
+                  v
+                  <li className="MenuLi" onClick={handleClose}>
+                    Dicas Imigrei
+                  </li>
+                </Link>
+                <Link href="/blog/italia">
+                  <li className="MenuLi" onClick={handleClose}>
+                    Italia
+                  </li>
+                </Link>
+                <Link href="/blog/portugal">
+                  <li className="MenuLi" onClick={handleClose}>
+                    Portugal
+                  </li>
+                </Link>
               </ul>
               <Link className="linkButton mt-10" href="#">
                 Contato
@@ -129,20 +136,14 @@ export function ListSecondary() {
         ) : (
           <>
             <ul className="flex items-center gap-14">
-              <li className={handleNavClass("/blog/dicas")}>
-                <Link href="/blog/dicas" className="link">
-                  Dicas Imigrei
-                </Link>
+              <li className={`${handleNavClass("/blog/dicas")} link`}>
+                <Link href="/blog/dicas">Dicas Imigrei</Link>
               </li>
-              <li className={handleNavClass("/blog/italia")}>
-                <Link href="/blog/italia" className="link">
-                  Italia
-                </Link>
+              <li className={`${handleNavClass("/blog/italia")} link`}>
+                <Link href="/blog/italia">Italia</Link>
               </li>
-              <li className={handleNavClass("/blog/portugal")}>
-                <Link href="/blog/portugal" className="link">
-                  Portugal
-                </Link>
+              <li className={`${handleNavClass("/blog/portugal")} link`}>
+                <Link href="/blog/portugal">Portugal</Link>
               </li>
               <li onClick={handleSearchClick}>
                 <FiSearch

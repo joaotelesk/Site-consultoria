@@ -66,9 +66,11 @@ export function ListPrimary() {
                 />
               </div>
               <ul className="mt-8 flex flex-col gap-4 font-medium">
-                <li className="MenuLi" onClick={handleClose}>
-                  <Link href="/">Home</Link>
-                </li>
+                <Link href="/">
+                  <li className="MenuLi" onClick={handleClose}>
+                    Home
+                  </li>
+                </Link>
                 <li className="MenuLi">
                   <div
                     className="flex justify-between"
@@ -88,9 +90,11 @@ export function ListPrimary() {
                   )}
                 </li>
                 <li className="MenuLi">Quem Somos</li>
-                <li className="MenuLi" onClick={handleClose}>
-                  <Link href="/blog">Blog</Link>
-                </li>
+                <Link href="/blog">
+                  <li className="MenuLi" onClick={handleClose}>
+                    Blog
+                  </li>
+                </Link>
               </ul>
               <Link className="linkButton mt-10" href="#">
                 Contato
