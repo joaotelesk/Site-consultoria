@@ -4,6 +4,7 @@ import { TextInput } from "@/components/InputText/InputText";
 import { Post } from "@/interfaces";
 import { NextPage } from "next";
 import Head from "next/head";
+import { Filter } from "@/components/Filter/Filter";
 
 // Utilities
 import { useServiceMutation, useServiceQuery } from "@/Utilities/Services";
@@ -15,11 +16,20 @@ import { useState } from "react";
 
 // Interfaces
 interface ItaliaPageProps {
-  blogData: Post[];
+  blogDataDefault: Post[];
+  blogDataCreateAsc: Post[];
+  blogDataUpdateAsc: Post[];
+  blogDataUpdateDes: Post[];
 }
 
-const ItaliaPage: NextPage<ItaliaPageProps> = ({ blogData }) => {
+const ItaliaPage: NextPage<ItaliaPageProps> = ({
+  blogDataDefault,
+  blogDataCreateAsc,
+  blogDataUpdateAsc,
+  blogDataUpdateDes,
+}) => {
   const [subscribeValue, setSubscribeValue] = useState("");
+  const [selected, setSelected] = useState({ value: "" });
   const { subscribeEmail, loading } = useServiceMutation();
   const toast = useToast();
 
@@ -40,8 +50,31 @@ const ItaliaPage: NextPage<ItaliaPageProps> = ({ blogData }) => {
     }
   }
 
+  function handleSelected(newValue: string) {
+    setSelected({ value: newValue });
+  }
   function handleSubscribeChange(event: React.ChangeEvent<HTMLInputElement>) {
     setSubscribeValue(event.target.value);
+  }
+
+  let blogdata = [];
+
+  switch (selected.value) {
+    case "criacaoDecrescente":
+      blogdata = blogDataDefault;
+      break;
+    case "criacaoCrescente":
+      blogdata = blogDataCreateAsc;
+      break;
+    case "atualizacaoDecrescente":
+      blogdata = blogDataUpdateDes;
+      break;
+    case "atualizacaoCrescente":
+      blogdata = blogDataUpdateAsc;
+      break;
+    default:
+      blogdata = blogDataDefault;
+      break;
   }
 
   return (
@@ -55,16 +88,19 @@ const ItaliaPage: NextPage<ItaliaPageProps> = ({ blogData }) => {
       <main className="w-full min-h-screen py-0">
         <section className=" text-center lg:text-start items-center bg-green-400 pt-28 lg:pt-0 lg:mt-28">
           <div className="container">
-            <div className=" flex flex-col items-center gap-10">
-              <h1 className="my-7 lg:my-16 text-3xl font-medium  lg:text-5xl text-green-500 flex gap-4">
-                Italia
+            <div className=" flex flex-col items-center gap-5">
+              <h1 className="mt-20 text-3xl font-medium  lg:text-5xl text-green-500 flex gap-4">
+                Itália
               </h1>
+              <div className="my-5">
+                <Filter onClick={handleSelected} />
+              </div>
             </div>
           </div>
         </section>
         <section className="flex justify-center bg-blogPages">
           <div className="container flex flex-wrap gap-x-2  content-center gap-y-16 justify-self-center lg:justify-between">
-            {blogData.map((item, index) => (
+            {blogdata.map((item, index) => (
               <div key={index}>
                 <CardPost blogData={item} type="primary" />
               </div>
@@ -115,11 +151,19 @@ const ItaliaPage: NextPage<ItaliaPageProps> = ({ blogData }) => {
 export default ItaliaPage;
 
 export async function getStaticProps() {
-  const { getAllPostsByType } = await useServiceQuery();
+  const {
+    getAllPostsByType,
+    getAllPostsByTypeOrderCreatedAsc,
+    getAllPostsByTypeOrderUpdatedAsc,
+    getAllPostsByTypeOrderUpdatedDes,
+  } = await useServiceQuery();
 
-  const blogData = await getAllPostsByType("italia");
+  const blogDataDefault = await getAllPostsByType("italia");
+  const blogDataCreateAsc = await getAllPostsByTypeOrderCreatedAsc("italia");
+  const blogDataUpdateAsc = await getAllPostsByTypeOrderUpdatedAsc("italia");
+  const blogDataUpdateDes = await getAllPostsByTypeOrderUpdatedDes("italia");
 
-  if (!blogData) {
+  if (!blogDataDefault) {
     return {
       notFound: true,
     };
@@ -127,7 +171,10 @@ export async function getStaticProps() {
 
   return {
     props: {
-      blogData,
+      blogDataDefault,
+      blogDataCreateAsc,
+      blogDataUpdateAsc,
+      blogDataUpdateDes,
     },
     revalidate: 60 * 60 * 1, // 1 hour
   };
