@@ -108,6 +108,7 @@ export function Filter({ onClick }: FilterProps) {
   const handleButtonClearClick = () => {
     setSelectedOption2("");
     setSelectedOption3("");
+    onClick("criacaoDecrescente");
     onClose();
   };
 
