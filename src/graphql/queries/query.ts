@@ -70,3 +70,46 @@ export const GET_ALL_POSTS_BY_TYPE_QUERY = gql`
     }
   }
 `;
+
+export const GET_ALL_POSTS_BY_TYPE_ORDER_CREATED_ASC_QUERY = gql`
+  query GetPostsByType($postType: PostType!) {
+    posts(where: { postType: $postType }, orderBy: createdAt_ASC) {
+      title
+      description
+      slug
+      thumbnail
+      thumbnailDescription
+      postType
+      createdAt
+    }
+  }
+`;
+
+export const GET_ALL_POSTS_BY_TYPE_ORDER_UPDATED_ASC_QUERY = gql`
+  query GetPostsByType($postType: PostType!) {
+    posts(where: { postType: $postType }, orderBy: updatedAt_ASC) {
+      title
+      description
+      slug
+      thumbnail
+      thumbnailDescription
+      postType
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const GET_ALL_POSTS_BY_TYPE_ORDER_UPDATED_DESC_QUERY = gql`
+  query GetPostsByType($postType: PostType!) {
+    posts(where: { postType: $postType }, orderBy: updatedAt_DESC) {
+      title
+      description
+      slug
+      thumbnail
+      thumbnailDescription
+      postType
+      createdAt
+    }
+  }
+`;
