@@ -83,7 +83,7 @@ export function Filter({ onClick }: FilterProps) {
             onClick("criacaoDecrescente");
             break;
           default:
-            onClick("criacaoDecrescente");
+            onClick("criacaoCrescente");
             break;
         }
         break;
