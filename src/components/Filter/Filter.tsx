@@ -344,7 +344,7 @@ export function Filter({ onClick }: FilterProps) {
                           }`}
                         />
                       </div>
-                      crescente
+                      Ordem crescente
                     </label>
                     <label className="flex px-0 gap-x-2 items-center">
                       <input
@@ -369,7 +369,7 @@ export function Filter({ onClick }: FilterProps) {
                           }`}
                         />
                       </div>
-                      decrescente
+                      Ordem decrescente
                     </label>
                   </AccordionPanel>
                 </AccordionItem>
