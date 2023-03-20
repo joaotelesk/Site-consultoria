@@ -13,7 +13,7 @@ export const ServiceData = [
     description:
       "Oferecemos uma variedade de serviços para os nossos assessorados que buscam o sonho de viver em Portugal e Itália!",
     link: "#",
-    image: "/Home/service1.svg",
+    image: "/Home/service1.png",
     alt: "imagem de uma mulher referente a servicos cidadania Portuguesa",
   },
   {
