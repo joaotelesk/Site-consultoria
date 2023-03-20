@@ -85,8 +85,8 @@ export default function Contato() {
             <Image
               src="/Contato/banner.svg"
               alt="Imagem banner principal"
-              width={352}
-              height={283}
+              width={280}
+              height={285}
               className="self-end mx-auto mt-5 col-span-2"
             />
           </div>
