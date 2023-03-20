@@ -96,7 +96,7 @@ export function ListPrimary() {
                   </li>
                 </Link>
               </ul>
-              <Link className="linkButton mt-10" href="#">
+              <Link className="linkButton mt-10" href="/contato">
                 Contato
               </Link>
             </motion.div>
@@ -137,7 +137,7 @@ export function ListPrimary() {
             </Link>
           </li>
         </ul>
-        <Link className="linkButton" href="#">
+        <Link className="linkButton" href="/contato">
           Contato
         </Link>
       </div>

@@ -98,7 +98,7 @@ export function ListSecondary() {
                   </li>
                 </Link>
               </ul>
-              <Link className="linkButton mt-10" href="#">
+              <Link className="linkButton mt-10" href="/contato">
                 Contato
               </Link>
             </motion.div>
@@ -153,7 +153,7 @@ export function ListSecondary() {
             </ul>
           </>
         )}
-        <Link className="linkButton" href="#">
+        <Link className="linkButton" href="/contato">
           Contato Imigrei
         </Link>
       </div>
