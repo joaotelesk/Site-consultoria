@@ -83,7 +83,6 @@ export function ListSecondary() {
               </div>
               <ul className="mt-8 flex flex-col gap-4 font-medium">
                 <Link href="/blog/dicas">
-                  v
                   <li className="MenuLi" onClick={handleClose}>
                     Dicas Imigrei
                   </li>
