@@ -1,4 +1,5 @@
 // Components
+import Script from "next/script";
 import Footer from "../Footer/Footer";
 import { Header } from "../Header/Header";
 
@@ -12,6 +13,10 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
+      <Script
+        strategy="beforeInteractive"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      />
       <div className="font-spaceGrotesk">
         <Header />
         {children}
