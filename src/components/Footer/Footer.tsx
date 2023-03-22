@@ -23,6 +23,7 @@ export default function Footer() {
             width={193}
             height={35}
             className="self-start lg:self-center"
+            priority
           />
           <p className="text-xs xl:text-base">
             Rua Manual João Souza, 540, São Paulo/SP - Brasil CNPJ:
