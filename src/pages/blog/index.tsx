@@ -88,6 +88,7 @@ const Blog: NextPage<BlogProps> = ({
               width={352}
               height={283}
               className="self-end mx-auto mt-5"
+              priority
             />
           </div>
         </section>
