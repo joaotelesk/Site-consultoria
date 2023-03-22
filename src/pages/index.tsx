@@ -98,6 +98,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
                 width={75}
                 height={35}
                 className="mx-auto lg:ml-0"
+                priority
               />
               <h1 className="mt-4 text-3xl font-medium  lg:text-5xl text-black-500">
                 Assessoria de imigração para Portugal e Itália
@@ -131,6 +132,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               width={345}
               height={362}
               className="order-2 lg:order-1 mx-auto"
+              priority
             />
 
             <div className="order-1 lg:order-2 flex flex-col">
@@ -173,7 +175,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
           </div>
         </section>
         <section className="lg:container">
-          <div className="container my-10 text-center text-gray-500 bg-subscribeSm lg:bg-subscribeLg bg-cover py-14 lg:my-20">
+          <div className="container my-10 text-center text-gray-500 bg-white-400 lg:bg-subscribeLg bg-cover py-14 lg:my-20">
             <span className="mt-7 text-green-500 font-medium">Newsletter</span>
             <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
               Fique por dentro das nossas atualizações!

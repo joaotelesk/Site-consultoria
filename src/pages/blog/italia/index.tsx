@@ -108,7 +108,7 @@ const ItaliaPage: NextPage<ItaliaPageProps> = ({
           </div>
         </section>
         <section className="container ">
-          <div className="container my-10 text-center text-gray-500 bg-subscribeSm lg:bg-subscribeLg bg-cover py-14 lg:my-20">
+          <div className="container my-10 text-center text-gray-500 bg-white-400 lg:bg-subscribeLg bg-cover py-14 lg:my-20">
             <span className="mt-7 text-green-500 font-medium">Newsletter</span>
             <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
               Fique por dentro das nossas atualizações!

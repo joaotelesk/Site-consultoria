@@ -88,6 +88,7 @@ export default function Contato() {
               width={280}
               height={285}
               className="self-end mx-auto mt-5 col-span-2"
+              priority
             />
           </div>
         </section>

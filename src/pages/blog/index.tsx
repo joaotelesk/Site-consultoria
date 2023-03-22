@@ -74,6 +74,7 @@ const Blog: NextPage<BlogProps> = ({
                   width={75}
                   height={35}
                   className="mx-auto lg:ml-0 order-1 lg:order-2"
+                  priority
                 />
               </div>
               <p className="mx-auto mt-4 lg:mt-6 text-green-300 text-sm lg:text-xl max-w-md lg:ml-0  lg:leading-6">
@@ -111,7 +112,7 @@ const Blog: NextPage<BlogProps> = ({
           </div>
         </section>
         <section className="container">
-          <div className="container my-10 text-center text-gray-500 bg-subscribeSm lg:bg-subscribeLg bg-cover py-14 lg:my-20">
+          <div className="container my-10 text-center text-gray-500 bg-white-400 lg:bg-subscribeLg bg-cover py-14 lg:my-20">
             <span className="mt-7 text-green-500 font-medium">Newsletter</span>
             <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
               Fique por dentro das nossas atualizações!
