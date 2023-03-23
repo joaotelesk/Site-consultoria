@@ -63,6 +63,9 @@
 }
 
 @layer components {
+  .icons-service {
+    @apply flex flex-row w-full mx-auto max-w-xs lg:flex-col items-center h-auto lg:h-24  text-center text-base text-gray-300 justify-start  lg:px-0 gap-x-5 lg:justify-between gap-2;
+  }
   .tags {
     @apply px-3 py-2 bg-gray-400 text-gray-300 text-sm;
   }
@@ -130,6 +133,7 @@
       rgba(227, 241, 228, 1) 0%
     );
   }
+
   @media (max-width: 984px) {
     .bg-blogPages {
       background: linear-gradient(
@@ -146,6 +150,14 @@
       rgba(250, 250, 250, 1) 0%,
       rgba(250, 250, 250, 1) 60%,
       rgba(250, 250, 250, 0) 60%
+    );
+  }
+  .box-servicos {
+    background: linear-gradient(
+      0deg,
+      rgba(227, 241, 228, 0) 45%,
+      rgba(227, 241, 228, 1) 45%,
+      rgba(227, 241, 228, 1) 0%
     );
   }
 }
