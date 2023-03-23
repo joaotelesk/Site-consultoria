@@ -1,5 +1,5 @@
 <div align="center" id="top">
-  <img src="./public/Thumbnail.png" alt="Thumbnail do site" />
+  <img src="./public/Thumbnail.webp" alt="Thumbnail do site" />
 
 &#xa0;
 

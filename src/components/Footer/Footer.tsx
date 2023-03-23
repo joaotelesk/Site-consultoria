@@ -18,7 +18,7 @@ export default function Footer() {
       <div className="container py-8 sm:py-16 lg:p-16 flex flex-col gap-y-8 lg:flex-row items-start text-white-300 ">
         <div className="flex flex-col items-start lg:items-center gap-5 max-w-sm lg:text-center lg:self-center ">
           <Image
-            src="/Footer/Logo-white.svg"
+            src="/Footer/Logo-white.webp"
             alt="logo"
             width={193}
             height={35}

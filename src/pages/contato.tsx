@@ -83,7 +83,7 @@ export default function Contato() {
               </p>
             </div>
             <Image
-              src="/Contato/banner.svg"
+              src="/Contato/banner.webp"
               alt="Imagem banner principal"
               width={280}
               height={285}

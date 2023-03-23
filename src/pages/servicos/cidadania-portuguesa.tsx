@@ -20,7 +20,7 @@ export default function CidadaniaPortuguesa() {
                   Cidadania Portuguesa
                 </h1>
                 <Image
-                  src="/bandeira-portugal.png"
+                  src="/bandeira-portugal.webp"
                   alt="Bandeira de portugal"
                   width={36}
                   height={35}
@@ -34,7 +34,7 @@ export default function CidadaniaPortuguesa() {
               </p>
             </div>
             <Image
-              src="/Servicos/Banner-cidadania-portuguesa.png"
+              src="/Servicos/Banner-cidadania-portuguesa.webp"
               alt="Imagem banner principal"
               width={399}
               height={290}
@@ -46,7 +46,7 @@ export default function CidadaniaPortuguesa() {
         <section className="lg:container">
           <div className="text-center lg:text-start container grid grid-cols-1 lg:grid-cols-2 items-center gap-16 mt-12 lg:my-20 box-white">
             <Image
-              src="/Servicos/Section-one-sp.png"
+              src="/Servicos/Section-one-sp.webp"
               alt="imagem de um homem e uma mulher sorrindo"
               width={495}
               height={370}
@@ -73,7 +73,7 @@ export default function CidadaniaPortuguesa() {
         <section className="container mt-14 lg:mt-32 mb-12 lg:mb-32 flex  px-24 lg:px-0 flex-col lg:flex-row  justify-center  gap-y-9 lg:gap-x-20">
           <div className="icons-service">
             <Image
-              src="/Servicos/figure1.svg"
+              src="/Servicos/figure1.webp"
               alt="figure 1"
               width={50}
               height={50}
@@ -83,7 +83,7 @@ export default function CidadaniaPortuguesa() {
           </div>
           <div className="icons-service">
             <Image
-              src="/Servicos/figure2.svg"
+              src="/Servicos/figure2.webp"
               alt="figure 2"
               width={50}
               height={50}
@@ -93,7 +93,7 @@ export default function CidadaniaPortuguesa() {
           </div>
           <div className="icons-service">
             <Image
-              src="/Servicos/figure3.svg"
+              src="/Servicos/figure3.webp"
               alt="figure 3"
               width={50}
               height={50}
@@ -103,7 +103,7 @@ export default function CidadaniaPortuguesa() {
           </div>
           <div className="icons-service">
             <Image
-              src="/Servicos/figure4.svg"
+              src="/Servicos/figure4.webp"
               alt="figure 4"
               width={50}
               height={50}
@@ -113,7 +113,7 @@ export default function CidadaniaPortuguesa() {
           </div>
           <div className="icons-service">
             <Image
-              src="/Servicos/figure5.svg"
+              src="/Servicos/figure5.webp"
               alt="figure 5"
               width={50}
               height={50}

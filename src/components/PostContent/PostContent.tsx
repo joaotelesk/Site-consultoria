@@ -135,7 +135,7 @@ export default function PostContent({ post }: PostContentProps) {
                 Ver site Imigrei
               </Link>
               <Image
-                src="/Blog/blog-sidebar.png"
+                src="/Blog/blog-sidebar.webp"
                 alt="mulher segurando documentos"
                 width={243}
                 height={296}

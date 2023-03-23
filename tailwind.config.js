@@ -20,8 +20,8 @@ module.exports = {
         mobile: "url(/Footer/mobile.webp)",
         desktop: "url(/Footer/desktop.webp)",
         subscribeLg: "url(/Home/subscribe-lg.webp)",
-        cidadaniaPort: "url(/Servicos/bg-banner.png)",
-        blog: "url(/Blog/banner-bg.png)",
+        cidadaniaPort: "url(/Servicos/bg-banner.webp)",
+        blog: "url(/Blog/banner-bg.webp)",
       },
     },
     fontFamily: {

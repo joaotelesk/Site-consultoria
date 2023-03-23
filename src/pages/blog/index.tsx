@@ -69,7 +69,7 @@ const Blog: NextPage<BlogProps> = ({
                   Blog Imigrei
                 </h1>
                 <Image
-                  src="/Home/bandeiras.png"
+                  src="/Home/bandeiras.webp"
                   alt="Bandeiras de portugal e italia"
                   width={75}
                   height={35}
@@ -83,7 +83,7 @@ const Blog: NextPage<BlogProps> = ({
               </p>
             </div>
             <Image
-              src="/Blog/banner.png"
+              src="/Blog/banner.webp"
               alt="Imagem banner principal"
               width={352}
               height={283}
@@ -196,7 +196,7 @@ const Blog: NextPage<BlogProps> = ({
               </Link>
             </div>
             <Image
-              src="/banner-woman.png"
+              src="/banner-woman.webp"
               alt="imagem de uma mulher sorrindo"
               width={345}
               height={362}
