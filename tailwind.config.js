@@ -1,3 +1,5 @@
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -23,7 +25,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      spaceGrotesk: ["Space Grotesk", "sans-serif"],
+      sans: ["var(--font-space-grotesk)", ...fontFamily.sans],
     },
     screens: {
       sm: "600px",

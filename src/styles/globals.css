@@ -18,7 +18,7 @@
     scroll-behavior: smooth !important;
   }
   body {
-    @apply bg-white-500 font-spaceGrotesk;
+    @apply bg-white-500;
   }
 
   .content-post h2,
