@@ -81,7 +81,10 @@ export function ListPrimary() {
                   </div>
                   {showServices ? (
                     <ul className="font-normal text-lg  flex flex-col gap-4 px-4">
-                      <li className="MenuLi mt-5">Cidadania Portuguesa</li>
+                      <Link href="/servicos/cidadania-portuguesa">
+                        <li className="MenuLi mt-5">Cidadania Portuguesa</li>
+                      </Link>
+
                       <li className="MenuLi">Cidadania Italiana</li>
                       <li>Visto</li>
                     </ul>
@@ -120,7 +123,9 @@ export function ListPrimary() {
             </div>
             {showServices && (
               <ul className="absolute top-[72px] py-4 z-10 flex flex-col bg-white-500 w-auto px-3  rounded shadow text-base">
-                <li className="py-2 cursor-pointer ">Cidadania Portuguesa</li>
+                <Link href="/servicos/cidadania-portuguesa">
+                  <li className="py-2 cursor-pointer ">Cidadania Portuguesa</li>
+                </Link>
                 <li className="py-2 cursor-pointer ">Vistos em Portugal</li>
                 <li className="py-2  cursor-pointer">Cidadania Italiana</li>
               </ul>
