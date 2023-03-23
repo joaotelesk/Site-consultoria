@@ -93,7 +93,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
           <div className=" container grid grid-cols-1 lg:grid-flow-col lg:gap-x-16 ">
             <div className=" py-5 lg:py-16  flex flex-col ">
               <Image
-                src="/Home/bandeiras.png"
+                src="/Home/bandeiras.webp"
                 alt="Bandeiras de portugal e italia"
                 width={75}
                 height={35}
@@ -115,7 +115,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               </Link>
             </div>
             <Image
-              src="/Home/banner.png"
+              src="/Home/banner.webp"
               alt="Imagem banner principal"
               width={426}
               height={418}
@@ -127,7 +127,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
         <section className="lg:container">
           <div className="text-center lg:text-start container grid grid-cols-1 lg:grid-cols-2 items-center gap-16 mt-12 lg:my-16 box-white">
             <Image
-              src="/Home/quemSomos.svg"
+              src="/Home/quemSomos.webp"
               alt="imagem de uma mulher sorrindo"
               width={345}
               height={362}
@@ -299,7 +299,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               </div>
               <Image
                 alt="mulher de camisa listrada sorridente"
-                src="/Home/contato.svg"
+                src="/Home/contato.webp"
                 width={406}
                 height={596}
                 className="hidden lg:block self-end"

@@ -28,7 +28,7 @@ export function Header() {
         <div className="container flex items-center justify-between">
           <Link href="/">
             <Image
-              src="/Header/Logo-green.svg"
+              src="/Header/Logo-green.webp"
               alt="Logo"
               width={193}
               height={35}
