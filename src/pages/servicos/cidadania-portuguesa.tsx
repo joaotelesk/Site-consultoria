@@ -1,8 +1,32 @@
+// Components
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { CardBlogCarousel } from "@/components/CardBlogCarousel/CardBlog";
+import { NextPage } from "next";
 
-export default function CidadaniaPortuguesa() {
+// Utilities
+import { useServiceQuery } from "@/Utilities/Services";
+import {
+  Accordion,
+  AccordionButton,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+} from "@chakra-ui/react";
+import { RiAddFill } from "react-icons/ri";
+import { HiOutlineMinusSm } from "react-icons/hi";
+
+// Interfaces
+import { Post } from "@/interfaces";
+
+interface CidadaniaPortuguesaProps {
+  blogData: Post[];
+}
+
+const CidadaniaPortuguesa: NextPage<CidadaniaPortuguesaProps> = ({
+  blogData,
+}) => {
   return (
     <>
       <Head>
@@ -188,7 +212,290 @@ export default function CidadaniaPortuguesa() {
             </div>
           </div>
         </section>
+        <section className="py-5 mt-2 lg:py-10 container">
+          <div className=" lg:pt-16">
+            <div className="text-center">
+              <span className="text-green-500 font-medium">FAQ</span>
+              <h2 className="mt-2 text-3xl text-black-400 font-medium">
+                Veja as dúvidas frequentes sobre o processo
+              </h2>
+              <p className="text-base mt-4 text-gray-300 mx-auto max-w-2xl lg:px-2   lg:leading-5 ">
+                Selecionamos as dúvidas mais frequêntes sobre o processo de
+                solicitação da cidadania portuguesa.
+              </p>
+            </div>
+          </div>
+          <div className="mt-5 lg:mt-12 mx-auto max-w-3xl">
+            <Accordion
+              allowToggle
+              borderColor="transparent"
+              border="transparent"
+              defaultIndex={[0]}
+            >
+              <AccordionItem>
+                {({ isExpanded }) => (
+                  <>
+                    <h2>
+                      <AccordionButton _hover={{ bg: "transparent" }}>
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          className="text-base lg:text-xl font-medium text-black-400  flex justify-between border-b pb-4"
+                        >
+                          Quanto tempo leva para a conclusão do pedida?
+                          {isExpanded ? (
+                            <HiOutlineMinusSm
+                              fontSize="20px"
+                              className="border-2 rounded-sm border-green-500 text-green-500"
+                            />
+                          ) : (
+                            <RiAddFill
+                              fontSize="20px"
+                              className="border-2 rounded-sm border-green-500 text-green-500"
+                            />
+                          )}
+                        </Box>
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={4}>
+                      <p className="text-sm lg:text-base font-normal text-gray-300">
+                        Não há um prazo exato para os procedimentos, isso varia
+                        de acordo com o volume de pedidos solicitados no momento
+                        e a quantidade de pessoas contempladas pelo pedido, mas,
+                        em média, os pedidos são concluídos em 2 anos.
+                      </p>
+                    </AccordionPanel>
+                  </>
+                )}
+              </AccordionItem>
+
+              <AccordionItem>
+                {({ isExpanded }) => (
+                  <>
+                    <h2>
+                      <AccordionButton _hover={{ bg: "transparent" }}>
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          className=" text-base lg:text-xl font-medium text-black-400 border-b pb-4 flex justify-between"
+                        >
+                          É possível que o pedido seja negado?
+                          {isExpanded ? (
+                            <HiOutlineMinusSm
+                              fontSize="20px"
+                              className="border-2 rounded-sm border-green-500 text-green-500"
+                            />
+                          ) : (
+                            <RiAddFill
+                              fontSize="20px"
+                              className="border-2 rounded-sm border-green-500 text-green-500"
+                            />
+                          )}
+                        </Box>
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={4}>
+                      <p className="text-sm lg:text-base font-normal text-gray-300">
+                        Não há um prazo exato para os procedimentos, isso varia
+                        de acordo com o volume de pedidos solicitados no momento
+                        e a quantidade de pessoas contempladas pelo pedido, mas,
+                        em média, os pedidos são concluídos em 2 anos.
+                      </p>
+                    </AccordionPanel>
+                  </>
+                )}
+              </AccordionItem>
+              <AccordionItem>
+                {({ isExpanded }) => (
+                  <>
+                    <h2>
+                      <AccordionButton _hover={{ bg: "transparent" }}>
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          className="text-base lg:text-xl font-medium text-black-400 border-b pb-4 flex justify-between"
+                        >
+                          Qualquer pessoa pode fazer a solicitação?
+                          {isExpanded ? (
+                            <HiOutlineMinusSm
+                              fontSize="20px"
+                              className="border-2 rounded-sm border-green-500 text-green-500"
+                            />
+                          ) : (
+                            <RiAddFill
+                              fontSize="20px"
+                              className="border-2 rounded-sm border-green-500 text-green-500"
+                            />
+                          )}
+                        </Box>
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={4}>
+                      <p className="text-sm lg:text-base font-normal text-gray-300">
+                        Não há um prazo exato para os procedimentos, isso varia
+                        de acordo com o volume de pedidos solicitados no momento
+                        e a quantidade de pessoas contempladas pelo pedido, mas,
+                        em média, os pedidos são concluídos em 2 anos.
+                      </p>
+                    </AccordionPanel>
+                  </>
+                )}
+              </AccordionItem>
+              <AccordionItem>
+                {({ isExpanded }) => (
+                  <>
+                    <h2>
+                      <AccordionButton _hover={{ bg: "transparent" }}>
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          className="text-base lg:text-xl font-medium text-black-400 border-b pb-4 flex justify-between"
+                        >
+                          Posso morar no país enquanto a solicitação está em
+                          andamento?
+                          {isExpanded ? (
+                            <HiOutlineMinusSm
+                              fontSize="20px"
+                              className="border-2 rounded-sm border-green-500 text-green-500"
+                            />
+                          ) : (
+                            <RiAddFill
+                              fontSize="20px"
+                              className="border-2 rounded-sm border-green-500 text-green-500"
+                            />
+                          )}
+                        </Box>
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={4}>
+                      <p className="text-sm lg:text-base font-normal text-gray-300">
+                        Não há um prazo exato para os procedimentos, isso varia
+                        de acordo com o volume de pedidos solicitados no momento
+                        e a quantidade de pessoas contempladas pelo pedido, mas,
+                        em média, os pedidos são concluídos em 2 anos.
+                      </p>
+                    </AccordionPanel>
+                  </>
+                )}
+              </AccordionItem>
+              <AccordionItem>
+                {({ isExpanded }) => (
+                  <>
+                    <h2>
+                      <AccordionButton _hover={{ bg: "transparent" }}>
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          className="text-base lg:text-xl font-medium text-black-400 border-b pb-4 flex justify-between"
+                        >
+                          Quanto custará todo o processo?
+                          {isExpanded ? (
+                            <HiOutlineMinusSm
+                              fontSize="20px"
+                              className="border-2 rounded-sm border-green-500 text-green-500"
+                            />
+                          ) : (
+                            <RiAddFill
+                              fontSize="20px"
+                              className="border-2 rounded-sm border-green-500 text-green-500"
+                            />
+                          )}
+                        </Box>
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={4}>
+                      <p className="text-sm lg:text-base font-normal text-gray-300">
+                        Não há um prazo exato para os procedimentos, isso varia
+                        de acordo com o volume de pedidos solicitados no momento
+                        e a quantidade de pessoas contempladas pelo pedido, mas,
+                        em média, os pedidos são concluídos em 2 anos.
+                      </p>
+                    </AccordionPanel>
+                  </>
+                )}
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </section>
+        <section className="lg:container">
+          <div className="text-center lg:text-start container grid grid-cols-1 lg:grid-cols-5 items-center lg:gap-16 lg:my-8 box-banner">
+            <div className="col-span-3 px-10 py-10 flex flex-col">
+              <span className=" mt-16 lg:mt-8 text-green-500 font-medium">
+                Contato
+              </span>
+              <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium lg:leading-9">
+                Vamos conquistar o sonho da cidadania portuguesa?
+              </h2>
+              <p className="text-sm sm:text-base mt-4 text-gray-300">
+                Entre em contato conosco e solicite um orçamento para o seu
+                pedido de cidadania. A Imigrei terá o prazer de te auxiliar
+                neste sonho!
+              </p>
+              <Link
+                href="/contato"
+                className="text-sm sm:text-base linkButton self-center lg:self-start my-4"
+              >
+                Solicitar Orçamento
+              </Link>
+            </div>
+            <Image
+              src="/banner-woman.webp"
+              alt="imagem de uma mulher sorrindo"
+              width={345}
+              height={362}
+              className=" mx-auto col-span-2"
+            />
+          </div>
+        </section>
+        <section className="my-12 lg:my-28">
+          <div className="flex flex-col container items-center lg:items-stretch">
+            <div className="text-center lg:text-start flex items-center">
+              <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
+                <span className="mt-4 text-green-500 font-medium">Blog</span>
+                <h2 className="mt-2 text-2xl sm:text-4xl text-black-400 font-medium">
+                  Conteúdo relacionado
+                </h2>
+                <p className="text-sm sm:text-base mt-4 text-gray-300  lg:leading-5">
+                  Veja alguns dos posts do nosso blog que estão relacionados com
+                  o processo de cidadania portuguesa.
+                </p>
+              </div>
+              <Link href="/blog" className="hidden lg:block button ml-auto">
+                Ver Blog
+              </Link>
+            </div>
+            <div className="container lg:px-0">
+              <CardBlogCarousel blogData={blogData} />
+            </div>
+
+            <Link href="/blog" className="lg:hidden button mt-5 ">
+              Ver Blog
+            </Link>
+          </div>
+        </section>
       </main>
     </>
   );
+};
+
+export default CidadaniaPortuguesa;
+
+export async function getStaticProps() {
+  const { getAllPostsByType } = await useServiceQuery();
+  const blogData = await getAllPostsByType("portugal");
+
+  if (!blogData) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { blogData },
+  };
 }
