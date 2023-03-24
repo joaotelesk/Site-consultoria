@@ -210,16 +210,16 @@ const CidadaniaItaliana: NextPage<CidadaniaItalianaProps> = ({ blogData }) => {
             </div>
           </div>
         </section>
-        <section className="py-10 lg:py-5 mt-2 lg:my-10 container">
+        <section className="py-10 lg:py-5 mt-2 lg:my-5 container">
           <div className=" lg:pt-16">
             <div className="text-center">
               <span className="text-green-500 font-medium">FAQ</span>
-              <h2 className="mt-2 text-3xl text-black-400 font-medium">
+              <h2 className="mt-2 text-2xl lg:text-4xl text-black-400 font-medium">
                 Veja as dúvidas frequentes sobre o processo
               </h2>
-              <p className="text-base mt-4 text-gray-300 mx-auto max-w-2xl lg:px-2   lg:leading-5 ">
+              <p className="text-sm lg:text-base mt-4 text-gray-300 mx-auto max-w-2xl lg:px-2   lg:leading-5 ">
                 Selecionamos as dúvidas mais frequêntes sobre o processo de
-                solicitação da cidadania portuguesa.
+                solicitação da cidadania Itália.
               </p>
             </div>
           </div>
@@ -484,7 +484,7 @@ const CidadaniaItaliana: NextPage<CidadaniaItalianaProps> = ({ blogData }) => {
               />
             </div>
           </section>
-          <section className="order-1 lg:order-2 mt-28 lg:my-28">
+          <section className="order-1 lg:order-2 mt-16 lg:my-20">
             <div className="flex flex-col container items-center lg:items-stretch">
               <div className="text-center lg:text-start flex items-center">
                 <div className="max-w-3xl mx-auto mb-14 lg:ml-0">
