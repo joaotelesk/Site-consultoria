@@ -20,7 +20,7 @@ export const ServiceData = [
     title: "Cidadania Italina",
     description:
       "Oferecemos uma variedade de serviços para os nossos assessorados que buscam o sonho de viver em Portugal e Itália!",
-    link: "#",
+    link: "/servicos/cidadania-italiana",
     image: "/Home/service2.webp",
     alt: "imagem de uma mulher referente a servicos cidadania Portuguesa",
   },
