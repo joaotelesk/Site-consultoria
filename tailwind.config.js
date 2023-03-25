@@ -20,7 +20,7 @@ module.exports = {
         mobile: "url(/Footer/mobile.webp)",
         desktop: "url(/Footer/desktop.webp)",
         subscribeLg: "url(/Home/subscribe-lg.webp)",
-        cidadaniaPort: "url(/Servicos/bg-banner-cp.webp)",
+        cidadaniaPort: "url(/Servicos/bg-banner-vp.webp)",
         blog: "url(/Blog/banner-bg.webp)",
         cidadaniaItal: "url(/Servicos/bg-banner-ci.webp)",
         blog: "url(/Blog/banner-bg.webp)",
