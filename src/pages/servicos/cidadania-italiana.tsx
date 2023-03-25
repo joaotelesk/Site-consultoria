@@ -476,7 +476,7 @@ const CidadaniaItaliana: NextPage<CidadaniaItalianaProps> = ({ blogData }) => {
                 </Link>
               </div>
               <Image
-                src="/banner-woman.webp"
+                src="/banner-woman-green.webp"
                 alt="imagem de uma mulher sorrindo"
                 width={345}
                 height={362}
