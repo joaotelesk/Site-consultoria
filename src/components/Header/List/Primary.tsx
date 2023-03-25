@@ -87,7 +87,9 @@ export function ListPrimary() {
                       <Link href="/servicos/cidadania-italiana">
                         <li className="MenuLi">Cidadania Italiana</li>
                       </Link>
-                      <li>Visto</li>
+                      <Link href="/servicos/visto-portugues">
+                        <li>Visto Portugues</li>
+                      </Link>
                     </ul>
                   ) : (
                     ""
@@ -130,7 +132,9 @@ export function ListPrimary() {
                 <Link href="/servicos/cidadania-italiana">
                   <li className="py-2  cursor-pointer">Cidadania Italiana</li>
                 </Link>
-                <li className="py-2 cursor-pointer ">Vistos em Portugal</li>
+                <Link href="/servicos/visto-portugues">
+                  <li className="py-2 cursor-pointer ">Visto Portugues</li>
+                </Link>
               </ul>
             )}
           </li>
