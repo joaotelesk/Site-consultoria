@@ -176,6 +176,7 @@ export function ListPrimary() {
                   border="none"
                   boxShadow="none"
                   right="none"
+                  outline="none"
                   className="flex justify-center"
                   onMouseEnter={onOpen}
                   onMouseLeave={onClose}
