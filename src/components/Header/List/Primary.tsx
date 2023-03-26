@@ -3,6 +3,14 @@ import Link from "next/link";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { RiMenuFill } from "react-icons/ri";
 import { VscChromeClose } from "react-icons/vsc";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
+  useDisclosure,
+} from "@chakra-ui/react";
 
 // Utilities
 import { motion } from "framer-motion";
@@ -13,8 +21,24 @@ import { useState } from "react";
 
 export function ListPrimary() {
   const router = useRouter();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [showServices, setShowServices] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  function scrollToSection(
+    event: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) {
+    event.preventDefault();
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const sectionTop = section.getBoundingClientRect().top;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const offset = sectionTop + scrollTop - 125; // 125 pixels de espaço acima da seção
+      window.scrollTo({ top: offset, behavior: "smooth" });
+    }
+  }
 
   const handleClick = () => {
     setShowModal(true);
@@ -66,7 +90,7 @@ export function ListPrimary() {
                 />
               </div>
               <ul className="mt-8 flex flex-col gap-4 font-medium">
-                <Link href="/">
+                <Link href="/" onClick={handleClose}>
                   <li className="MenuLi" onClick={handleClose}>
                     Home
                   </li>
@@ -81,13 +105,22 @@ export function ListPrimary() {
                   </div>
                   {showServices ? (
                     <ul className="font-normal text-lg  flex flex-col gap-4 px-4">
-                      <Link href="/servicos/cidadania-portuguesa">
+                      <Link
+                        href="/servicos/cidadania-portuguesa"
+                        onClick={handleClose}
+                      >
                         <li className="MenuLi mt-5">Cidadania Portuguesa</li>
                       </Link>
-                      <Link href="/servicos/cidadania-italiana">
+                      <Link
+                        href="/servicos/cidadania-italiana"
+                        onClick={handleClose}
+                      >
                         <li className="MenuLi">Cidadania Italiana</li>
                       </Link>
-                      <Link href="/servicos/visto-portugues">
+                      <Link
+                        href="/servicos/visto-portugues"
+                        onClick={handleClose}
+                      >
                         <li>Visto Portugues</li>
                       </Link>
                     </ul>
@@ -95,14 +128,20 @@ export function ListPrimary() {
                     ""
                   )}
                 </li>
-                <li className="MenuLi">Quem Somos</li>
-                <Link href="/blog">
+                <Link href="/quem-somos" onClick={handleClose}>
+                  <li className="MenuLi">Quem Somos</li>
+                </Link>
+                <Link href="/blog" onClick={handleClose}>
                   <li className="MenuLi" onClick={handleClose}>
                     Blog
                   </li>
                 </Link>
               </ul>
-              <Link className="linkButton mt-10" href="/contato">
+              <Link
+                className="linkButton mt-10"
+                href="/contato"
+                onClick={handleClose}
+              >
                 Contato
               </Link>
             </motion.div>
@@ -112,37 +151,83 @@ export function ListPrimary() {
 
       <div className="hidden lg:flex gap-14">
         <ul className="flex items-center gap-x-12">
-          <li className={handleNavClass("/")}>
-            <Link href="/">Home</Link>
-          </li>
-          <li
-            onMouseEnter={toggleShowServices}
-            onMouseLeave={toggleShowServices}
-            className="flex justify-center"
-          >
-            <div className="flex gap-3 items-center link">
-              <span className={handleNavClass("services")}>Serviços</span>
-              {showServices ? <IoIosArrowUp /> : <IoIosArrowDown />}
-            </div>
-            {showServices && (
-              <ul className="absolute top-[72px] py-4 z-10 flex flex-col bg-white-500 w-auto px-3  rounded shadow text-base">
+          <Link href="/">
+            <li className={handleNavClass("/")}>Home</li>
+          </Link>
+          <li>
+            <Menu
+              isOpen={isOpen}
+              onClose={onClose}
+              offset={[-4, 0]}
+              closeOnBlur={false}
+            >
+              <Link
+                href="#"
+                onClick={(event) => scrollToSection(event, "quemSomos")}
+              >
+                <MenuButton
+                  _active={{ backgroundColor: "transparent" }}
+                  backgroundColor="transparent"
+                  _hover={{ backgroundColor: "transparent" }}
+                  isActive={isOpen}
+                  as={Button}
+                  px={0}
+                  py={0}
+                  className="flex justify-center"
+                  onMouseEnter={onOpen}
+                  onMouseLeave={onClose}
+                  rightIcon={
+                    isOpen ? (
+                      <IoIosArrowUp size={20} />
+                    ) : (
+                      <IoIosArrowDown size={20} />
+                    )
+                  }
+                >
+                  <span
+                    className={
+                      (handleNavClass("services"), "text-xl font-normal")
+                    }
+                  >
+                    Serviços
+                  </span>
+                </MenuButton>
+              </Link>
+              <MenuList
+                onMouseEnter={onOpen}
+                onMouseLeave={onClose}
+                py={0}
+                rounded="md"
+                width="auto"
+              >
                 <Link href="/servicos/cidadania-portuguesa">
-                  <li className="py-2 cursor-pointer ">Cidadania Portuguesa</li>
+                  <MenuItem
+                    roundedTop="md"
+                    className="text-base hover:bg-green-400 hover:text-black-400"
+                  >
+                    Cidadania Portuguesa
+                  </MenuItem>
                 </Link>
                 <Link href="/servicos/cidadania-italiana">
-                  <li className="py-2  cursor-pointer">Cidadania Italiana</li>
+                  <MenuItem className="text-base hover:bg-green-400 hover:text-black-400">
+                    Cidadania Italiana
+                  </MenuItem>
                 </Link>
                 <Link href="/servicos/visto-portugues">
-                  <li className="py-2 cursor-pointer ">Visto Portugues</li>
+                  <MenuItem
+                    roundedBottom="md"
+                    className="text-base hover:bg-green-400 hover:text-black-400"
+                  >
+                    Visto Portugues
+                  </MenuItem>
                 </Link>
-              </ul>
-            )}
+              </MenuList>
+            </Menu>
           </li>
-          <li>
-            <Link href="#" className="link">
-              Quem Somos
-            </Link>
-          </li>
+
+          <Link href="/quem-somos" className="link">
+            <li className={handleNavClass("/quem-somos")}>Quem Somos</li>
+          </Link>
           <li className={handleNavClass("/blog")}>
             <Link href="/blog" className="link">
               Blog
