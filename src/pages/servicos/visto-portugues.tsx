@@ -357,7 +357,7 @@ const PageVistoPortugues: NextPage<PageVistoPortuguesProps> = ({
                 alt="imagem de uma mulher sorrindo"
                 width={345}
                 height={362}
-                className=" mx-auto col-span-2"
+                className=" mx-auto col-span-2 self-end"
               />
             </div>
           </section>

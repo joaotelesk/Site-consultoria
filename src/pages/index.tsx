@@ -8,7 +8,7 @@ import { useToast } from "@chakra-ui/react";
 import { CardBlogCarousel } from "@/components/CardBlogCarousel/CardBlog";
 
 // Hooks
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 
 // Utilities
 import { emailRegex, initState, ServiceData } from "@/Utilities/Variables";
@@ -157,7 +157,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
             </div>
           </div>
         </section>
-        <section className="mt-12 lg:mt-28">
+        <section className="mt-12 lg:mt-28" id="quemSomos">
           <div className="text-center container">
             <span className="text-green-500 font-medium">Serviços</span>
             <h2 className="mt-2  text-2xl sm:text-4xl text-black-400 font-medium">
