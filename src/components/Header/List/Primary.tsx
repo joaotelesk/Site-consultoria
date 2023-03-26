@@ -173,11 +173,12 @@ export function ListPrimary() {
                   as={Button}
                   px={0}
                   py={0}
+                  _focus={{ boxShadow: "none" }}
                   border="none"
                   boxShadow="none"
                   right="none"
                   outline="none"
-                  className="flex justify-center"
+                  className="flex justify-center outline-none"
                   onMouseEnter={onOpen}
                   onMouseLeave={onClose}
                   rightIcon={
