@@ -72,7 +72,7 @@ export default function Footer() {
               <Link
                 href="#"
                 arial-label="Pagina Serviços"
-                onClick={(event) => scrollToSection(event, "quemSomos")}
+                onClick={(event) => scrollToSection(event, "servicos")}
               >
                 Servicos
               </Link>

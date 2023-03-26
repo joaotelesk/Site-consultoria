@@ -163,7 +163,7 @@ export function ListPrimary() {
             >
               <Link
                 href="#"
-                onClick={(event) => scrollToSection(event, "quemSomos")}
+                onClick={(event) => scrollToSection(event, "servicos")}
               >
                 <MenuButton
                   _active={{ backgroundColor: "transparent" }}
