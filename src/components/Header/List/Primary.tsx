@@ -173,6 +173,9 @@ export function ListPrimary() {
                   as={Button}
                   px={0}
                   py={0}
+                  border="none"
+                  boxShadow="none"
+                  right="none"
                   className="flex justify-center"
                   onMouseEnter={onOpen}
                   onMouseLeave={onClose}
@@ -203,20 +206,20 @@ export function ListPrimary() {
                 <Link href="/servicos/cidadania-portuguesa">
                   <MenuItem
                     roundedTop="md"
-                    className="text-base hover:bg-green-400 hover:text-black-400"
+                    className="active:bg-none text-base hover:bg-green-400 hover:text-black-400"
                   >
                     Cidadania Portuguesa
                   </MenuItem>
                 </Link>
                 <Link href="/servicos/cidadania-italiana">
-                  <MenuItem className="text-base hover:bg-green-400 hover:text-black-400">
+                  <MenuItem className="active:bg-none text-base hover:bg-green-400 hover:text-black-400">
                     Cidadania Italiana
                   </MenuItem>
                 </Link>
                 <Link href="/servicos/visto-portugues">
                   <MenuItem
                     roundedBottom="md"
-                    className="text-base hover:bg-green-400 hover:text-black-400"
+                    className="active:bg-none text-base hover:bg-green-400 hover:text-black-400"
                   >
                     Visto Portugues
                   </MenuItem>
