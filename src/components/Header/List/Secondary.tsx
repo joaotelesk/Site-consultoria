@@ -12,6 +12,12 @@ import { motion } from "framer-motion";
 // Hooks
 import { useRouter } from "next/router";
 import { useState } from "react";
+import {
+  convertStringCharacters,
+  convertStringUpcase,
+} from "@/Utilities/Convert";
+import { Post } from "@/interfaces";
+import { useServiceSearchQuery } from "@/Utilities/Services";
 
 export function ListSecondary() {
   const router = useRouter();
@@ -19,6 +25,10 @@ export function ListSecondary() {
   const [searchValue, setSearchValue] = useState("");
   const [showInput, setShowInput] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [hasValidInput, setHasValidInput] = useState(false);
+
+  const { useSearchPostsQuery } = useServiceSearchQuery();
+  const { searchPosts, data } = useSearchPostsQuery();
 
   const handleClick = () => {
     setShowModal(true);
@@ -40,11 +50,21 @@ export function ListSecondary() {
   }
 
   function handleCloseClick() {
+    setHasValidInput(false);
     setShowInput(false);
+    setSearchValue("");
+    setShowModal(false);
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setSearchValue(event.target.value);
+    const { value } = event.target;
+    setSearchValue(value);
+    if (value) {
+      setHasValidInput(true);
+      searchPosts(searchValue);
+    } else {
+      setHasValidInput(false);
+    }
   }
 
   return (
@@ -105,7 +125,7 @@ export function ListSecondary() {
           </motion.div>
         )}
       </div>
-      <div className="hidden lg:flex gap-12">
+      <div className="hidden lg:flex gap-x-12">
         {showInput ? (
           <>
             <div>
@@ -130,6 +150,33 @@ export function ListSecondary() {
                   />
                 </TextInput.Icon>
               </TextInput.Root>
+              {hasValidInput && data && (
+                <ul className="absolute bg-white-500 rounded-sm shadow-sm mt-1">
+                  {data.posts.map((post: Post, index: any) => (
+                    <Link
+                      href={`/blog/${post.postType}/${post.slug}`}
+                      key={index}
+                      onClick={handleCloseClick}
+                    >
+                      <li
+                        key={index}
+                        className="flex justify-between w-96 items-center py-2 px-4 hover:bg-green-400 cursor-pointer"
+                      >
+                        <span className="text-lg text-green-300">
+                          {post.title.length > 25
+                            ? `${convertStringCharacters(post.title, 24)}...`
+                            : post.title}
+                        </span>
+                        <div className="text-base text-gray-300 ">
+                          {post.postType === "dicas"
+                            ? "Dicas Imigrei"
+                            : convertStringUpcase(post.postType)}
+                        </div>
+                      </li>
+                    </Link>
+                  ))}
+                </ul>
+              )}
             </div>
           </>
         ) : (
