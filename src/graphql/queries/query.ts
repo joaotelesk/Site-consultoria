@@ -113,3 +113,12 @@ export const GET_ALL_POSTS_BY_TYPE_ORDER_UPDATED_DESC_QUERY = gql`
     }
   }
 `;
+export const GET_FIRST_FIVE_POSTS_BY_TITLE_QUERY = gql`
+  query ($title: String!) {
+    posts(where: { title_contains: $title }, first: 5) {
+      title
+      postType
+      slug
+    }
+  }
+`;
