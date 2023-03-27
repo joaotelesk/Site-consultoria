@@ -46,7 +46,7 @@
 
 ### Os objetivos do projeto:
 
-- Criar um website instituicional com blog.
+- Criar um website institucional com blog.
 - Melhorar as habilidades com método getStaticProps com utilização do GraphQL.
 - Criação de projeto para portfólio.
 
@@ -54,7 +54,7 @@
 
 - O projeto resultou no aperfeiçoamento:
   - Utilização do Next.js com método getStaticProps e utilização do pacote next/fonts/google para hidratar a aplicação com as fontes pré-carregadas em tempo de build.
-  - tilização do GraphQL com a renderização de forma estática através do método getStaticProps do Next.js.
+  - Utilização do GraphQL com a renderização de forma estática através do método getStaticProps do Next.js.
 - Construção de um projeto para portfólio.
 
 Links:
@@ -67,7 +67,7 @@ Links:
 
 ## 🛹 Funcionalidades
 
-✔️ Buscar Posts por atulização
+✔️ Buscar Posts por atualização
 
 ✔️ Buscar Post por slug
 
@@ -81,13 +81,13 @@ Links:
 
 ✔️ Enviar subscrição de e-mail
 
-✔️ Enviar formulario de contato
+✔️ Enviar formulário de contato
 
 <br/>
 
 ## 🚀 Tecnologias
 
-Abaixo poderá ter acesso às principais tecnologias usadas neste projeto
+Abaixo você poderá ter acesso às principais tecnologias usadas neste projeto
 
 - [NextJS](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
