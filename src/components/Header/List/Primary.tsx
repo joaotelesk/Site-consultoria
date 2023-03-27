@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 // Hooks
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { BsBorderBottom } from "react-icons/bs";
 
 export function ListPrimary() {
   const router = useRouter();
@@ -158,7 +159,7 @@ export function ListPrimary() {
             <Menu
               isOpen={isOpen}
               onClose={onClose}
-              offset={[-4, 0]}
+              offset={[-40, -4]}
               closeOnBlur={false}
             >
               <Link
@@ -168,11 +169,15 @@ export function ListPrimary() {
                 <MenuButton
                   _active={{ backgroundColor: "transparent" }}
                   backgroundColor="transparent"
-                  _hover={{ backgroundColor: "transparent" }}
+                  _hover={{
+                    backgroundColor: "transparent",
+                    textColor: "#11569E",
+                  }}
                   isActive={isOpen}
                   as={Button}
                   px={0}
                   py={0}
+                  rounded="none"
                   _focus={{ boxShadow: "none" }}
                   border="none"
                   boxShadow="none"
