@@ -7,10 +7,10 @@
 
 <h1 align="center">Site Institucional</h1>
 
-<h4 align="center">
+<!-- <h4 align="center">
 	🚧   Under construction...  🚧
-</h4>
-<hr>
+</h4> -->
+<!-- <hr> -->
 
 <p align="center">
   <a href="#-sobre">Sobre</a> &#xa0; | &#xa0;
@@ -24,6 +24,22 @@
 
 ## 🧠 Sobre
 
+## Paginas
+
+- Home
+- Serviços/Cidadania-Italiana
+- Serviços/Cidadania-Portuguesa
+- Serviços/Visto-Portugues
+- Quem-Somos
+- Contato
+- Blog
+- Blog/Italia
+- Blog/Italia/(titulo)
+- Blog/Portugal
+- Blog/Portugal/(titulo)
+- Blog/Dicas
+- Blog/Dicas/(titulo)
+
 ### As atividades do projeto:
 
 - Escolha das tecnologias: Next.js, TypeScript, Tailwind, GraphQL.
@@ -31,15 +47,15 @@
 ### Os objetivos do projeto:
 
 - Criar um website instituicional com blog.
-- Desenvolver mais as habilidades com graphql
-- Criação de projeto para portfólio
+- Melhorar as habilidades com método getStaticProps com utilização do GraphQL.
+- Criação de projeto para portfólio.
 
 ### Os resultados do projeto:
 
-- Under construction... 🚧
-
-<!-- - O projeto resultou em um website pessoal funcional que atende aos seus requisitos.
-- Disponibilizar o código-fonte e do layout do website pessoal no GitHub e no Linkedin, para contribuiu comunidade de programação, permitindo que outros desenvolvedores possam se inspirar e aprender com o meu trabalho. -->
+- O projeto resultou no aperfeiçoamento:
+  - Utilização do Next.js com método getStaticProps e utilização do pacote next/fonts/google para hidratar a aplicação com as fontes pré-carregadas em tempo de build.
+  - tilização do GraphQL com a renderização de forma estática através do método getStaticProps do Next.js.
+- Construção de um projeto para portfólio.
 
 Links:
 
@@ -54,6 +70,8 @@ Links:
 ✔️ Buscar Posts por atulização
 
 ✔️ Buscar Post por slug
+
+✔️ Buscar Post por titulo
 
 ✔️ Buscar os 4 últimos Post por categoria
 
