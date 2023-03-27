@@ -152,9 +152,11 @@ export function ListPrimary() {
 
       <div className="hidden lg:flex gap-14">
         <ul className="flex items-center gap-x-12">
-          <Link href="/">
-            <li className={handleNavClass("/")}>Home</li>
-          </Link>
+          <li className={handleNavClass("/")}>
+            <Link href="/">
+              <span>Home</span>
+            </Link>
+          </li>
           <li>
             <Menu
               isOpen={isOpen}
