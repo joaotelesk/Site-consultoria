@@ -234,10 +234,11 @@ export function ListPrimary() {
               </MenuList>
             </Menu>
           </li>
-
-          <Link href="/quem-somos" className="link">
-            <li className={handleNavClass("/quem-somos")}>Quem Somos</li>
-          </Link>
+          <li className={handleNavClass("/quem-somos")}>
+            <Link href="/quem-somos" className="link">
+              <span>Quem Somos</span>
+            </Link>
+          </li>
           <li className={handleNavClass("/blog")}>
             <Link href="/blog" className="link">
               Blog
