@@ -158,12 +158,16 @@ export async function getStaticProps() {
     getAllPostsByTypeOrderUpdatedDes,
   } = await useServiceQuery();
 
-  const blogDataDefault = await getAllPostsByType("dicas");
-  const blogDataCreateAsc = await getAllPostsByTypeOrderCreatedAsc("dicas");
-  const blogDataUpdateAsc = await getAllPostsByTypeOrderUpdatedAsc("dicas");
-  const blogDataUpdateDes = await getAllPostsByTypeOrderUpdatedDes("dicas");
+  const defaultType = "dicas";
+  const [defaultData, createAscData, updateAscData, updateDesData] =
+    await Promise.all([
+      getAllPostsByType(defaultType),
+      getAllPostsByTypeOrderCreatedAsc(defaultType),
+      getAllPostsByTypeOrderUpdatedAsc(defaultType),
+      getAllPostsByTypeOrderUpdatedDes(defaultType),
+    ]);
 
-  if (!blogDataDefault) {
+  if (!defaultData) {
     return {
       notFound: true,
     };
@@ -171,10 +175,10 @@ export async function getStaticProps() {
 
   return {
     props: {
-      blogDataDefault,
-      blogDataCreateAsc,
-      blogDataUpdateAsc,
-      blogDataUpdateDes,
+      blogDataDefault: defaultData,
+      blogDataCreateAsc: createAscData,
+      blogDataUpdateAsc: updateAscData,
+      blogDataUpdateDes: updateDesData,
     },
     revalidate: 60 * 60 * 1, // 1 hour
   };

@@ -265,11 +265,17 @@ export async function getStaticProps() {
   const { getFourPostsByType, getFirstFourPostsByCreate } =
     await useServiceQuery();
 
-  const blogData = await getFirstFourPostsByCreate();
-  const postTypeResponseDicas = await getFourPostsByType("dicas");
-  const postTypeResponseItalia = await getFourPostsByType("italia");
-  const postTypeResponsePortugal = await getFourPostsByType("portugal");
-
+  const [
+    blogData,
+    postTypeResponseDicas,
+    postTypeResponseItalia,
+    postTypeResponsePortugal,
+  ] = await Promise.all([
+    getFirstFourPostsByCreate(),
+    getFourPostsByType("dicas"),
+    getFourPostsByType("italia"),
+    getFourPostsByType("portugal"),
+  ]);
   if (!blogData) {
     return {
       notFound: true,

@@ -158,12 +158,16 @@ export async function getStaticProps() {
     getAllPostsByTypeOrderUpdatedDes,
   } = await useServiceQuery();
 
-  const blogDataDefault = await getAllPostsByType("italia");
-  const blogDataCreateAsc = await getAllPostsByTypeOrderCreatedAsc("italia");
-  const blogDataUpdateAsc = await getAllPostsByTypeOrderUpdatedAsc("italia");
-  const blogDataUpdateDes = await getAllPostsByTypeOrderUpdatedDes("italia");
+  const defaultType = "italia";
+  const [defaultData, createAscData, updateAscData, updateDesData] =
+    await Promise.all([
+      getAllPostsByType(defaultType),
+      getAllPostsByTypeOrderCreatedAsc(defaultType),
+      getAllPostsByTypeOrderUpdatedAsc(defaultType),
+      getAllPostsByTypeOrderUpdatedDes(defaultType),
+    ]);
 
-  if (!blogDataDefault) {
+  if (!defaultData) {
     return {
       notFound: true,
     };
@@ -171,10 +175,10 @@ export async function getStaticProps() {
 
   return {
     props: {
-      blogDataDefault,
-      blogDataCreateAsc,
-      blogDataUpdateAsc,
-      blogDataUpdateDes,
+      blogDataDefault: defaultData,
+      blogDataCreateAsc: createAscData,
+      blogDataUpdateAsc: updateAscData,
+      blogDataUpdateDes: updateDesData,
     },
     revalidate: 60 * 60 * 1, // 1 hour
   };
