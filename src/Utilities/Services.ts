@@ -1,5 +1,5 @@
 import { useToast } from "@chakra-ui/react";
-import { useMutation } from "@apollo/client";
+import { useLazyQuery, useMutation } from "@apollo/client";
 import { client } from "@/lib/apollo";
 import {
   FORM_MUTATION,
@@ -14,6 +14,7 @@ import {
   GET_ALL_POSTS_BY_TYPE_ORDER_CREATED_ASC_QUERY,
   GET_ALL_POSTS_BY_TYPE_ORDER_UPDATED_DESC_QUERY,
   GET_ALL_POSTS_BY_TYPE_ORDER_UPDATED_ASC_QUERY,
+  GET_FIRST_FIVE_POSTS_BY_TITLE_QUERY,
 } from "@/graphql/queries/query";
 import { Post } from "@/interfaces";
 
@@ -168,6 +169,7 @@ export const useServiceQuery = async () => {
     });
     return data.posts;
   };
+
   return {
     getFirstFourPosts,
     getPostBySlug,
@@ -177,5 +179,22 @@ export const useServiceQuery = async () => {
     getAllPostsByTypeOrderCreatedAsc,
     getAllPostsByTypeOrderUpdatedDes,
     getAllPostsByTypeOrderUpdatedAsc,
+  };
+};
+
+export const useServiceSearchQuery = () => {
+  const useSearchPostsQuery = () => {
+    const [searchPosts, { loading, data }] = useLazyQuery(
+      GET_FIRST_FIVE_POSTS_BY_TITLE_QUERY
+    );
+
+    return {
+      searchPosts: (title: string) => searchPosts({ variables: { title } }),
+      loading,
+      data,
+    };
+  };
+  return {
+    useSearchPostsQuery,
   };
 };
