@@ -6,18 +6,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { useToast } from "@chakra-ui/react";
 import { CardBlogCarousel } from "@/components/CardBlogCarousel/CardBlog";
+import { NextPage } from "next";
 
 // Hooks
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 // Utilities
 import { emailRegex, initState, ServiceData } from "@/Utilities/Variables";
 import { useServiceMutation, useServiceQuery } from "@/Utilities/Services";
-import { NextPage } from "next";
 
 // Interfaces
 import { FormValue, Post } from "@/interfaces";
-import { scrollToSection } from "@/Utilities/Functions";
 interface HomeProps {
   blogData: Post[];
 }
@@ -28,6 +27,21 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
 
   const toast = useToast();
   const { subscribeEmail, formContact, loading } = useServiceMutation();
+
+  const scrollToSection = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    event.preventDefault();
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const sectionTop = section.getBoundingClientRect().top;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const offset = sectionTop + scrollTop - 125; // 125 pixels de espaço acima da seção
+      window.scrollTo({ top: offset, behavior: "smooth" });
+    }
+  };
 
   async function handleSubscribeSubmit(event: React.FormEvent) {
     event.preventDefault();
