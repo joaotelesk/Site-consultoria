@@ -17,6 +17,7 @@ import { NextPage } from "next";
 
 // Interfaces
 import { FormValue, Post } from "@/interfaces";
+import { scrollToSection } from "@/Utilities/Functions";
 interface HomeProps {
   blogData: Post[];
 }
@@ -110,6 +111,7 @@ const Home: NextPage<HomeProps> = ({ blogData }) => {
               <Link
                 href="#"
                 className=" mt-4 lg:mt-11 linkButton text-base  max-w-[209px] mx-auto lg:ml-0"
+                onClick={(event) => scrollToSection(event, "servicos")}
               >
                 Conhecer Serviços
               </Link>

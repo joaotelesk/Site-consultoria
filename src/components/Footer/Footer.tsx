@@ -1,4 +1,5 @@
 // Components
+import { scrollToSection } from "@/Utilities/Functions";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,20 +14,6 @@ import {
 // Interfaces
 
 export default function Footer() {
-  function scrollToSection(
-    event: React.MouseEvent<HTMLAnchorElement>,
-    sectionId: string
-  ) {
-    event.preventDefault();
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const sectionTop = section.getBoundingClientRect().top;
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      const offset = sectionTop + scrollTop - 125; // 125 pixels de espaço acima da seção
-      window.scrollTo({ top: offset, behavior: "smooth" });
-    }
-  }
   return (
     <footer className="bg-mobile bg-cover lg:bg-desktop">
       <div className="container py-8 sm:py-16 lg:p-16 flex flex-col gap-y-8 lg:flex-row items-start text-white-300 ">
